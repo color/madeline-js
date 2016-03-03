@@ -23,7 +23,7 @@ std::string pedigree_SVG(emscripten::val header, emscripten::val content)
         pedigreeSet.addPedigreesFromDataTable(dataTable, 0, "");
         return pedigreeSet.draw(dataTable);
     } // if
-    return "<?xml version=\"1.0\" standalone=\"no\"?>\n<svg version=\"1.1\" id=\"svgDC\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n</svg>\n";
+    return std::string();
 } // pedigree_SVG
 
 
@@ -34,5 +34,5 @@ EMSCRIPTEN_BINDINGS(stl_wrappers)
 
 EMSCRIPTEN_BINDINGS(module)
 {
-    emscripten::function("render", &pedigree_SVG);
+    emscripten::function("draw", &pedigree_SVG);
 }

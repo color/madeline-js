@@ -16,5 +16,5 @@ var data = ['m100', 'cs_001', 'm', '.', '.',
             'm114', 'cs_001', 'f', 'm105', 'm106',
             'm112', 'cs_001', 'm', 'm105', 'm106'];
 
-var svg = Madeline.render(columns, data);
+var svg = Madeline.draw(columns, data);
 console.log(svg);
