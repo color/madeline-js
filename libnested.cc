@@ -4,12 +4,15 @@
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
+#include "madeline/src/DrawingMetrics.h"
 #include "madeline/src/Parser.h"
 #include "madeline/src/PedigreeSet.h"
 
 
 std::string pedigree_SVG(emscripten::val header, emscripten::val content)
 {
+    DrawingMetrics::setColor(true);
+
     Parser dataTableParser;
     dataTableParser.nested(emscripten::vecFromJSArray<std::string>(header),
                            emscripten::vecFromJSArray<std::string>(content));
