@@ -12,6 +12,8 @@
 std::string pedigree_SVG(emscripten::val header, emscripten::val content)
 {
     DrawingMetrics::setColor(true);
+    DrawingMetrics::setEmbeddedState(true);
+    DrawingMetrics::setScalableState(true);
 
     Parser dataTableParser;
     dataTableParser.nested(emscripten::vecFromJSArray<std::string>(header),
