@@ -1,0 +1,12 @@
+{
+  "name": "madeline",
+  "version": "0.0.1",
+  "description": "JavaScript port of Madeline 2.0 PDE",
+  "license": "GPL",
+  "main": "madeline.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lumc-nested/madeline-js.git"
+  }
+}
+
