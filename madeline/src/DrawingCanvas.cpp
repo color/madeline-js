@@ -107,7 +107,7 @@ void DrawingCanvas::_setHeader(){
 		_header <<  "<?xml version=\"1.0\" standalone=\"no\"?>\n";
 	}
 
-	_header << " <svg version=\"1.1\"  id=\"svgDC\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" ";
+	_header << " <svg version=\"1.1\" id=\"svgDC\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"";
 
 	//
 	// Set HEIGHT and WIDTH based on actual x and y extents:
@@ -116,12 +116,12 @@ void DrawingCanvas::_setHeader(){
 	// (in which case only VIEWBOX will be included (below):
 	//
 	if(DrawingMetrics::getScalableState()==false){
-		_header << " width=\"" << (int) getXRange() << "\" height=\"" << (int) getYRange() << "\" ";
+		_header << " width=\"" << (int) getXRange() << "\" height=\"" << (int) getYRange() << "\"";
 	}
 
 	//
 	// Add the VIEWBOX attribute, again based on actual x and y extents:
-	_header << " viewBox=\"0 0 " << (int) getXRange() << " " << (int) getYRange() << "\" ";
+	//_header << " viewBox=\"0 0 " << (int) getXRange() << " " << (int) getYRange() << "\" ";
 
 	//
 	// Add javascript stub:
