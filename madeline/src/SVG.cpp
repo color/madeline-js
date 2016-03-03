@@ -125,9 +125,9 @@ void SVG::drawMaleIcon(std::ostringstream& os,double x, double y, const std::str
 	double r = 0.5 * d;
 	x -= r;
 	y -= r;
-	os << "  <g class=\"individual male\">\n";
+	os << "  <g class=\"individual male\"";
+	if(id.size()   ) os << " id=\"" << id << "\">\n";
 	os << "  <rect x=\"" << x << "\" y=\"" << y << "\" width=\"" << d << "\" height=\"" << d << "\"";
-	if(id.size()   ) os << " id=\"" << id << "\"";
 	if(cssClass.size()) os << " class=\"" << cssClass << "\"";
 	
 	if(id.size()){
@@ -178,9 +178,9 @@ void SVG::drawMaleIconEdge(std::ostringstream& os,double x, double y){
 //
 void SVG::drawFemaleIcon(std::ostringstream& os,double x, double y, const std::string &id, const std::string &cssClass){
 	
-	os << "  <g class=\"individual female\">\n";
+	os << "  <g class=\"individual female\"";
+	if(id.size()   ) os << " id=\"" << id << "\">\n";
 	os << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << DrawingMetrics::getIconRadius() << "\"";
-	if(id.size()   ) os << " id=\"" << id << "\"";
 	if(cssClass.size()) os << " class=\"" << cssClass << "\"";
 	
 	if(id.size()){
@@ -219,13 +219,13 @@ void SVG::drawGenderUnknownIcon(std::ostringstream& os,double x, double y, const
 	double r = DrawingMetrics::getIconRadius();
 	double d = 2.0 * r / M_SQRT2;
 	y -= r;
-	os << "  <g class=\"individual unknown\">\n";
+	os << "  <g class=\"individual unknown\"";
+	if(id.size()   ) os << " id=\"" << id << "\">\n";
 	os << "<path d=\"M " << x << " " << y;
 	os << " l " << -d << " " << d;
 	os << " " << d << " " << d;
 	os << " " << d << " " << -d;
 	os << " z\"";
-	if(id.size()   ) os << " id=\"" << id << "\"";
 	if(cssClass.size()) os << " class=\"" << cssClass << "\"";
 	
 	if(id.size()){

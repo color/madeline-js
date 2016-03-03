@@ -1,5 +1,4 @@
 #include <string>
-#include <vector>
 
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
@@ -19,7 +18,7 @@ std::string pedigree_SVG(emscripten::val header, emscripten::val content)
     dataTableParser.nested(emscripten::vecFromJSArray<std::string>(header),
                            emscripten::vecFromJSArray<std::string>(content));
 
-    DataTable* dataTable = dataTableParser.getTable(0);
+    DataTable const* const dataTable = dataTableParser.getTable(0);
     if (dataTable->getTableType() == DataTable::PEDIGREE)
     {
         PedigreeSet pedigreeSet;
@@ -39,3 +38,4 @@ EMSCRIPTEN_BINDINGS(module)
 {
     emscripten::function("draw", &pedigree_SVG);
 }
+
