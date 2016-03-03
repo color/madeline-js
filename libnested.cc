@@ -19,12 +19,10 @@ std::string pedigree_SVG(emscripten::val header, emscripten::val content)
     dataTableParser.nested(emscripten::vecFromJSArray<std::string>(header),
                            emscripten::vecFromJSArray<std::string>(content));
 
-    DataTable *dataTable;
-    PedigreeSet pedigreeSet;
-    dataTable = dataTableParser.getTable(0);
-
+    DataTable* dataTable = dataTableParser.getTable(0);
     if (dataTable->getTableType() == DataTable::PEDIGREE)
     {
+        PedigreeSet pedigreeSet;
         pedigreeSet.addPedigreesFromDataTable(dataTable, 0, "");
         return pedigreeSet.draw(dataTable);
     } // if
