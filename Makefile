@@ -10,7 +10,7 @@ OBJECTS    = $(SOURCES:.cpp=.o)
 
 
 all: $(TARGET)
-	$(CC) -Oz -v -s DEMANGLE_SUPPORT=1 --pre-js pre.js --post-js post.js --memory-init-file 0 --bind $(TARGET).bc libnested.cc -o $(TARGET).js
+	$(CC) -O3 -v -s DEMANGLE_SUPPORT=1 --pre-js pre.js --post-js post.js --memory-init-file 0 --bind $(TARGET).bc libnested.cc -o $(TARGET).js
 
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $(TARGET).bc $(OBJECTS)
