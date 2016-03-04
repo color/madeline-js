@@ -10,6 +10,15 @@ Core fields
 - Father
 - Mother
 
+IndiviualId type
+----------------
+First character of the IndividualId:
+
+- `^` No offspring
+- `&` No offspring (infertility)
+- `@` Terminated pregnancy
+- `!` Virtual (inserted by Madeline)
+
 Optional "Core" fields
 ----------------------
 - Affected
