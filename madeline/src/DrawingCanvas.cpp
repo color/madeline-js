@@ -332,6 +332,7 @@ void DrawingCanvas::_setCSS(){
 	_header << "	stroke-linejoin:miter;\n";
 	_header << "	stroke:#000;\n";
 	_header << "	fill:#ffffff;\n";
+	_header << "	fill-opacity:0.0;\n";
 	_header << "}\n\n";
 
 	//
@@ -345,6 +346,7 @@ void DrawingCanvas::_setCSS(){
 	_header << "	stroke-dasharray:2mm,1mm;\n";
 	_header << "	stroke-dashoffset:1.0mm;\n";
 	_header << "	fill:#ffffff;\n";
+	_header << "	fill-opacity:0.0;\n";
 	_header << "}\n\n";
 
 	_header << ".solid:hover{\n";
