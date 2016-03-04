@@ -10,7 +10,7 @@ Core fields
 - Father
 - Mother
 
-IndiviualId type
+IndividualId type
 ----------------
 First character of the IndividualId:
 
