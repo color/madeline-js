@@ -1,20 +1,13 @@
 Madeline = require('./madeline.js');
 
-var columns = ['Individualid', 'Familyid', 'Gender', 'Mother', 'Father'];
-var data = ['m100', 'cs_001', 'm', '.', '.',
-            'm101', 'cs_001', 'f', '.', '.',
-            'm102', 'cs_001', 'm', 'm101', 'm100',
-            'm103', 'cs_001', 'f', 'm101', 'm100',
-            'm104', 'cs_001', 'm', '.', '.',
-            'm105', 'cs_001', 'f', 'm101', 'm100',
-            'm106', 'cs_001', 'm', '.', '.',
-            'm107', 'cs_001', 'm', 'm101', 'm100',
-            'm109', 'cs_001', 'm', 'm103', 'm104',
-            'm108', 'cs_001', 'm', 'm103', 'm104',
-            'm110', 'cs_001', 'm', 'm114', 'm108',
-            'm111', 'cs_001', 'm', 'm114', 'm108',
-            'm114', 'cs_001', 'f', 'm105', 'm106',
-            'm112', 'cs_001', 'm', 'm105', 'm106'];
+var columns = ['Individualid', 'Familyid', 'Gender', 'Mother', 'Father', 'DZTwin', 'MZTwin', 'DOB', 'Affected'];
+var data = ['m100', 'test', 'f', '.', '.', '.', '.', '.', 'a',
+            'm101', 'test', 'm', '.', '.', '.', '.', '.', 'b',
+            'm102', 'test', 'f', '.', '.', '.', '.', '.', 'c',
+            'm103', 'test', '', 'm100', 'm101', '.', '.', '.', 'a',
+            'm104', 'test', '', 'm102', 'm101', '.', '.', '.', 'b',
+            'm105', 'test', '', 'm100', 'm101', '.', '.', '.', 'c',
+];
 
 var svg = Madeline.draw(columns, data);
 console.log(svg);

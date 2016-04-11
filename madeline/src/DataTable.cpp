@@ -1066,9 +1066,9 @@ ColorSeries *DataTable::getBlackAndWhiteSeriesFromStack(unsigned nth) const{
 void DataTable::_setColorSeriesStack(void){
 
 	if(_iconColumns.size()){
-		std::cout << "----------------------------------------------------------------" << std::endl;
-		std::cout << vt100::startBlue << " ICON COLUMNS                                        TOTAL: " << _iconColumns.size() << vt100::stopColor << std::endl;
-		std::cout << "----------------------------------------------------------------" << std::endl;
+		//std::cout << "----------------------------------------------------------------" << std::endl;
+		//std::cout << vt100::startBlue << " ICON COLUMNS                                        TOTAL: " << _iconColumns.size() << vt100::stopColor << std::endl;
+		//std::cout << "----------------------------------------------------------------" << std::endl;
 		//
 		// Passing true to the ColorSeriesStack
 		// constructor creates bichromatic color series:
@@ -1084,10 +1084,10 @@ void DataTable::_setColorSeriesStack(void){
 			// Push a color series with said number of levels onto the color and black-and-white stacks:
 			_colorSeriesStack->add(levels);
 			_blackAndWhiteSeriesStack->add(levels);
-			std::cout << "   " << (i+1) << ". " << std::left << std::setw(32) << pDC->getName() << " has " << levels << " non-missing level" << (levels==1?"":"s") << "." << std::endl;
+			//std::cout << "   " << (i+1) << ". " << std::left << std::setw(32) << pDC->getName() << " has " << levels << " non-missing level" << (levels==1?"":"s") << "." << std::endl;
 
 		}
-		std::cout << "----------------------------------------------------------------" << std::endl;
+		//std::cout << "----------------------------------------------------------------" << std::endl;
 	}
 
 }

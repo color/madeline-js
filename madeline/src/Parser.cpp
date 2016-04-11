@@ -26,8 +26,7 @@
 
 #include "Parser.h"
 
-// Nested API
-#include "nestedparser.h"
+#include "StringParser.h"
 
 
 #ifdef MYSQLPP
@@ -42,14 +41,13 @@
 // DEBUG:
 #include <iostream>
 
-// Nested API
-void Parser::nested(std::vector<std::string> const &header,
-                    std::vector<std::string> const &content)
+void Parser::from_string(std::vector<std::string> const &header,
+                         std::vector<std::string> const &content)
 {
-    NestedParser nested(header, content);
-    DataTable *table = new DataTable(nested);
+    StringParser parser(header, content);
+    DataTable *table = new DataTable(parser);
     _tables.push_back(table);
-} // Parser::nested
+} // Parser::from_string
 
 
 Parser::Parser(){};

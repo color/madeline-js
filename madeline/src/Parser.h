@@ -66,9 +66,8 @@ public:
 	void display();                                     /// Prints out all datatables that have been read in
 
 
-    // Nested API
-    void nested(std::vector<std::string> const &header,
-                std::vector<std::string> const &content);
+    void from_string(std::vector<std::string> const &header,
+                     std::vector<std::string> const &content);
 
 
 	void readFile(const std::string &filename);        /// Read in a file, unzip it, parse it, and put the contents into a datatable

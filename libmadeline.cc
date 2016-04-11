@@ -15,13 +15,17 @@ std::string pedigree_SVG(emscripten::val header, emscripten::val content)
     DrawingMetrics::setScalableState(false);
 
     Parser dataTableParser;
-    dataTableParser.nested(emscripten::vecFromJSArray<std::string>(header),
-                           emscripten::vecFromJSArray<std::string>(content));
+    dataTableParser.from_string(emscripten::vecFromJSArray<std::string>(header),
+                                emscripten::vecFromJSArray<std::string>(content));
 
-    DataTable const* const dataTable = dataTableParser.getTable(0);
+    DataTable* const dataTable = dataTableParser.getTable(0);
     if (dataTable->getTableType() == DataTable::PEDIGREE)
     {
         PedigreeSet pedigreeSet;
+        std::vector<std::string> labels;
+
+        labels.push_back(emscripten::vecFromJSArray<std::string>(header).front());
+        dataTable->toggleColumnsForPedigree(labels);
         pedigreeSet.addPedigreesFromDataTable(dataTable, 0, "");
         return pedigreeSet.draw(dataTable);
     } // if
