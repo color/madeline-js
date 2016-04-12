@@ -73,7 +73,7 @@ std::string DrawingCanvas::svg(void)
     canvas << " <g id=\"bottomLayer" << "\" class=\"layer\" >\n";
     canvas << _bottomLayer.str() << "\n";
     canvas << " </g>\n";
-    for (int i = 0; i < _layers.size(); ++i)
+    for (unsigned i = 0; i < _layers.size(); ++i)
     {
         canvas << _layers[i] << "\n";
     } // for
@@ -1721,7 +1721,7 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		// UniqueList ordinals are 1-offset, so we should only get zero back
 		// if the key was not found, which should never happen:
 		//
-		if(level==0) throw Exception("DrawingCanvas::iconPie()","UniqueList returned ordinal 0.");
+		//if(level==0) throw Exception("DrawingCanvas::iconPie()","UniqueList returned ordinal 0.");
 		//
 		// Level is 1-offset, so subtract:
 		//
@@ -2157,7 +2157,7 @@ bool DrawingCanvas::useWhiteInk(Individual *pIndividual){
 			// UniqueList ordinals are 1-offset, so we should only get zero back
 			// if the key was not found, which should never happen:
 			//
-			if(level==0) throw Exception("DrawingCanvas::useWhiteInk()","UniqueList returned ordinal 0.");
+			//if(level==0) throw Exception("DrawingCanvas::useWhiteInk()","UniqueList returned ordinal 0.");
 			//
 			// Level is 1-offset, so subtract:
 			//

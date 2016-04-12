@@ -74,7 +74,7 @@ public:
 	
 	bool isMissing( void ) const { return _value==MISSING_DONOR; };
 	void setMissing( void ){ _value = MISSING_DONOR; };
-	const DATATYPE getDataType( void ) const { return DONOR; };
+	DATATYPE getDataType( void ) const { return DONOR; };
 	Donor* clone() const;
 	// operators required by Data base class
 	bool operator==(const Data&) const;

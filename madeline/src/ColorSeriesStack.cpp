@@ -40,7 +40,7 @@ ColorSeriesStack::ColorSeriesStack( SERIESTYPE type ){
 //
 // setBichromatic():
 //
-void ColorSeriesStack::setBichromatic(bool seriesAreBichromatic){
+void ColorSeriesStack::setBichromatic(bool){
 	
 	_type = BICHROMATIC;
 	

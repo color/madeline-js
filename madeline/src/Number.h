@@ -203,7 +203,7 @@ public:
 	bool operator!=(const Number& b) const;
 	bool operator>(const Number& b) const;
 	
-	const DATATYPE getDataType( void ) const { return NUMBER; }
+	DATATYPE getDataType( void ) const { return NUMBER; }
 	virtual Number* clone() const;
 	
 	// Determines whether a string is a valid Number string

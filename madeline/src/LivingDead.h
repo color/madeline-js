@@ -72,7 +72,7 @@ public:
 	// Additional Setters/Getters not present in virtual base class:
 	//
 	void set(LIVINGDEAD livingdead);
-	const LIVINGDEAD getEnum( void ) const { if(_isMissing) return LivingDead::MISSING; if(_value) return LivingDead::DEAD; else return LivingDead::ALIVE; }
+	LIVINGDEAD getEnum( void ) const { if(_isMissing) return LivingDead::MISSING; if(_value) return LivingDead::DEAD; else return LivingDead::ALIVE; }
 	
 };
 

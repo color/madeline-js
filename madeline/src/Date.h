@@ -289,7 +289,7 @@ public:
 	bool operator<(const Data& b) const;
 	bool operator==(const Data& b) const;
 	bool isApproximate( void ) const { return _isApproximate; }
-	const DATATYPE getDataType( void ) const { return DATE; } 
+	DATATYPE getDataType( void ) const { return DATE; } 
 	virtual Date* clone() const;
 	
 	// Determines whether a string is a valid Date string

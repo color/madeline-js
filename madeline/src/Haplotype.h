@@ -74,7 +74,7 @@ public:
 	// Operators:
 	bool operator<( const Data& b) const;
 	bool operator==( const Data& b) const;
-	const DATATYPE getDataType( void ) const { return HAPLOTYPE; }
+	DATATYPE getDataType( void ) const { return HAPLOTYPE; }
 	virtual Haplotype* clone() const;
 	
 	// Additional methods:

@@ -75,7 +75,7 @@ public:
 	// Additional Setters/Getters not present in virtual base class:
 	//
 	void set(GENDER gender);
-	const GENDER getEnum( void ) const { if(_isMissing) return Gender::MISSING; if(_value) return Gender::FEMALE; else return MALE; }
+	GENDER getEnum( void ) const { if(_isMissing) return Gender::MISSING; if(_value) return Gender::FEMALE; else return MALE; }
 
 	static bool isA(std::string inString);
 };

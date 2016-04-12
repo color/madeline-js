@@ -103,7 +103,7 @@ FieldLabels::FieldLabels()
 //
 // find:
 //
-bool FieldLabels::find(std::string inString, DATATYPE inType)
+bool FieldLabels::find(std::string , DATATYPE )
 {
 /*
 	switch(inType)

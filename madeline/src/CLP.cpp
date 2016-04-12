@@ -76,7 +76,7 @@ void CLP::_setSwitchArguments(std::string currentSwitch,int argc,char* argv[],in
 	std::vector<std::string> tempArgs;
 	unsigned switchArgumentSize =cls.getNumberOfSwitchArguments();
 	for(unsigned k=0;k<switchArgumentSize;k++){
-		if((currentIndex+k+1) < argc && argv[currentIndex+k+1][0] != '-'){
+		if((currentIndex+k+1) < (unsigned) argc && argv[currentIndex+k+1][0] != '-'){
 			std::string temp = argv[currentIndex+k+1];
 			tempArgs.push_back(temp);
 		}else{

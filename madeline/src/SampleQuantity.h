@@ -67,8 +67,8 @@ public:
 	}
 	
 	const std::string get(void)        const { return _value;        }
-	const bool        getBoolean(void) const { return _booleanValue; }
-	const double      getValue(void)   const { return _doubleValue;  }
+	bool        getBoolean(void) const { return _booleanValue; }
+	double      getValue(void)   const { return _doubleValue;  }
 	
 	static bool isa(std::string inString);
 	

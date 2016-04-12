@@ -74,7 +74,7 @@ public:
 	// Additional Setters/Getters not present in virtual base class:
 	//
 	void set(CONSULTAND consultand);
-	const CONSULTAND getEnum( void ) const { if(_isMissing) return Consultand::MISSING; if(_value) return Consultand::IS_CONSULTAND; else return NOT_CONSULTAND; }
+	CONSULTAND getEnum( void ) const { if(_isMissing) return Consultand::MISSING; if(_value) return Consultand::IS_CONSULTAND; else return NOT_CONSULTAND; }
 	
 };
 

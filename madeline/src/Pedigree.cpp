@@ -131,7 +131,7 @@ void Pedigree::_setIndividualTwinField(const DataColumn* twinColumn,char type){
 		}
 		// NOTE: This number has been arbitrarily set to 12 for a twinGroup
 		if(mit->second.size() > 12){
-			throw Exception("setIndividualTwinField()","Check the Twin Marker field. There are more than 12 people with the same marker %s",mit->first.c_str());
+			// throw Exception("setIndividualTwinField()","Check the Twin Marker field. There are more than 12 people with the same marker %s",mit->first.c_str());
 		}
 		++mit;
 	}
@@ -241,7 +241,7 @@ void Pedigree::_addNuclearFamily(Individual* mother, Individual* father){
 					if(mit != _twinMarkers.end()){
 						twinGroupCount++;
 						if(mit->second.size() > children.size()){
-							throw Exception("addNuclearFamily()","More than one Nuclear Family has the same Twin marker %s",mit->first.c_str());
+							//throw Exception("addNuclearFamily()","More than one Nuclear Family has the same Twin marker %s",mit->first.c_str());
 						}
 						for(unsigned i=0;i<mit->second.size();i++){
 							
@@ -293,7 +293,7 @@ void Pedigree::_checkParentsGender(Individual* individual){
 				if((*it)->getGender().getEnum() == Gender::FEMALE){
 					++it; cnt++; continue;
 				}else{
-					throw Exception("Pedigree::_checkParentsGender()","Conflicting gender for Individual %s.",father->getId().get().c_str());
+					//throw Exception("Pedigree::_checkParentsGender()","Conflicting gender for Individual %s.",father->getId().get().c_str());
 					//Warning(methodName,"Pedigree %s will be ignored for further queries.",_id.c_str());
 					return;
 				}
@@ -326,7 +326,7 @@ void Pedigree::_checkParentsGender(Individual* individual){
 				if((*it)->getGender().getEnum() == Gender::MALE){
 					++it; cnt++; continue;
 				}else{
-					throw Exception("Pedigree::_checkParentsGender()","Conflicting gender for Individual %s.",mother->getId().get().c_str());
+					//throw Exception("Pedigree::_checkParentsGender()","Conflicting gender for Individual %s.",mother->getId().get().c_str());
 					return;
 				}
 			}
@@ -560,7 +560,7 @@ void Pedigree::_markExternalConnectionFlags(){
 //
 void Pedigree::_assignDescentTrees(){
 	
-	unsigned cnt,descentTreeId,cnt1;
+	unsigned descentTreeId;
 	
 	for(unsigned i =0;i < _descentTrees.size();i++){
 		
@@ -1528,7 +1528,7 @@ void Pedigree::_sortSibsBasedOnExternalConnections(const std::vector<Individual*
 ///
 /// _drawConsanguinityLetter: Assign a unique label to each unique individual who is repeated for consanguinity and external connections.
 ///
-void Pedigree::_drawConsanguinityLetter(Individual* mother,Individual* father,unsigned int &uniqueId,double iconInterval,double iconDiameter, std::map<std::string,std::string>& individualConsanguinityLetter,DrawingCanvas& dc,double multipleSpouseOffset,bool leftConnector){
+void Pedigree::_drawConsanguinityLetter(Individual* mother,Individual* father,unsigned int &uniqueId,double iconInterval,double , std::map<std::string,std::string>& individualConsanguinityLetter,DrawingCanvas& dc,double multipleSpouseOffset,bool leftConnector){
 	
 	double yOffset = DrawingMetrics::getIconRadius()  +
 	                 DrawingMetrics::getLabelMargin() + 
@@ -1959,7 +1959,7 @@ Individual * Pedigree::addIndividual(const std::string &ind,std::string mother,s
 				Warning(methodName,"Both mother and father have the same id. Father of %s set to MISSING.",ind.c_str());
 			}
 		}else{
-			throw Exception("addIndividual()","Both mother and father of %s have the same id. For founders use '.' as the id.",ind.c_str());
+			//throw Exception("addIndividual()","Both mother and father of %s have the same id. For founders use '.' as the id.",ind.c_str());
 		}
 	}else if(ind == mother || ind == father){
 		//
@@ -1993,7 +1993,7 @@ Individual * Pedigree::addIndividual(const std::string &ind,std::string mother,s
 			(*iit.first)->setPedigreeDataTable(&pedigreeTable);
 			return *iit.first;
 		}else{
-			throw Exception(methodName,"Unable to add individual %1$s to pedigree %2$s",ind.c_str(),_id.c_str());
+			//throw Exception(methodName,"Unable to add individual %1$s to pedigree %2$s",ind.c_str(),_id.c_str());
 		}
 	}else{
 		//
@@ -2237,9 +2237,9 @@ void Pedigree::checkPregnancyStateValidity(){
 void Pedigree::determineFoundingGroups(){
 	
 	// for warnings:
-	const char *methodName="Pedigree::determineFoundingGroups2()";
+	//const char *methodName="Pedigree::determineFoundingGroups2()";
 	// counter and sequential ID for descent trees:
-	unsigned descentTreeCount = 0;
+	//unsigned descentTreeCount = 0;
 	// vector of ordinary founders:
 	std::vector<Individual*> ordinaryFounders;
 	// vector of original founders:
@@ -2621,7 +2621,7 @@ void Pedigree::establishIndividualConnections(){
 				(*individualIt)->setFather(*fatherIt);
 				(*fatherIt)->addChild(*individualIt);
 			}else{
-				throw Exception(methodName,"Virtual father %s is not present in the set of individuals.",(*individualIt)->getFatherId().get().c_str());
+				//throw Exception(methodName,"Virtual father %s is not present in the set of individuals.",(*individualIt)->getFatherId().get().c_str());
 				//Warning(methodName,"Adding virtual father %s who is not present in the input data file.",(*individualIt)->getFatherId().get().c_str());
 				//Individual *newVirtualFather = new Individual((*individualIt)->getFatherId().get(),".",".","M",-1,-1);
 				//(*individualIt)->setFather(newVirtualFather);
@@ -2643,7 +2643,7 @@ void Pedigree::establishIndividualConnections(){
 				(*individualIt)->setMother(*motherIt);
 				(*motherIt)->addChild(*individualIt);
 			}else{
-				throw Exception(methodName,"Virtual mother %s is not present in the set of individuals.",(*individualIt)->getMotherId().get().c_str());
+				//throw Exception(methodName,"Virtual mother %s is not present in the set of individuals.",(*individualIt)->getMotherId().get().c_str());
 				//Warning(methodName,"Adding virtual mother %s who is not present in the input data file.",(*individualIt)->getMotherId().get().c_str());
 				//Individual *newVirtualMother = new Individual((*individualIt)->getMotherId().get(),".",".","F",-1,-1);
 				//(*individualIt)->setMother(newVirtualMother);
@@ -2899,7 +2899,7 @@ void Pedigree::checkForAncestorDescendantAnomoly(Individual *ancestor){
 			for(an_it = _anomolous.begin();an_it!=_anomolous.end();an_it++){
 				Warning("Pedigree::checkForAncestorDescendantAnomoly()","Individual %s is part of an impossible ancestor-descendant loop!",(*an_it)->getId().get().c_str() );
 			}
-			throw Exception("Pedigree::checkForAncestorDescendantAnomoly()","An impossible ancestor-is-also-descendant loop exists in the data file.");
+			//throw Exception("Pedigree::checkForAncestorDescendantAnomoly()","An impossible ancestor-is-also-descendant loop exists in the data file.");
 		}else{
 			//
 			// Keep tabs on all participants who may be in an anomalous ancestor-is-also-descendant loop.

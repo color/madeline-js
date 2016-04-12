@@ -127,7 +127,7 @@ public:
 	// Operators:
 	bool operator<( const Data& b) const;
 	bool operator==( const Data& b) const;
-	const DATATYPE getDataType( void ) const { return GENOTYPE; }
+	DATATYPE getDataType( void ) const { return GENOTYPE; }
 	virtual Genotype* clone() const;
 	
 	/// Determines whether a string is a valid Genotype string

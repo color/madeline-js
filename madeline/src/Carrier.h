@@ -74,7 +74,7 @@ public:
 	// Additional Setters/Getters not present in virtual base class:
 	//
 	void set(CARRIER carrier);
-	const CARRIER getEnum( void ) const { if(_isMissing) return Carrier::MISSING; if(_value) return Carrier::IS_CARRIER; else return Carrier::NOT_CARRIER; }
+	CARRIER getEnum( void ) const { if(_isMissing) return Carrier::MISSING; if(_value) return Carrier::IS_CARRIER; else return Carrier::NOT_CARRIER; }
 	
 };
 

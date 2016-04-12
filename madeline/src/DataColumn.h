@@ -139,7 +139,7 @@ public:
 	// This cannot be a const method because it needs
 	// to create the private _uniqueList if not yet present:
 	// 
-	const UniqueList *const getUniqueList(void);
+	const UniqueList *getUniqueList(void);
 
 };
 

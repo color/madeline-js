@@ -46,19 +46,27 @@ using namespace LASi;
 //
 // setFont:
 //
-void LASiWrapper::setFont(const char* font){ 
-	#ifdef LASI
+void LASiWrapper::setFont(const char*
+#ifdef LASI
+font
+#endif
+){ 
+#ifdef LASI
 		_doc1.osBody() << LASi::setFont( font ); 
-	#endif
+#endif
 }
 
 //
 // setFontSize:
 //
-void LASiWrapper::setFontSize(double fontSize){ 
-	#ifdef LASI
+void LASiWrapper::setFontSize(double
+#ifdef LASI
+fontSize
+#endif
+){ 
+#ifdef LASI
 		_doc1.osBody() << LASi::setFontSize(fontSize); 
-	#endif
+#endif
 }
 
 //

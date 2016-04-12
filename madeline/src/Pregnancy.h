@@ -72,7 +72,7 @@ public:
 	// Additional Setters/Getters not present in virtual base class:
 	//
 	void set(PREGNANCY pregnancy);
-	const PREGNANCY getEnum( void ) const { if(_isMissing) return Pregnancy::MISSING; if(_value) return Pregnancy::IS_PREGNANCY; else return NOT_PREGNANCY; }
+	PREGNANCY getEnum( void ) const { if(_isMissing) return Pregnancy::MISSING; if(_value) return Pregnancy::IS_PREGNANCY; else return NOT_PREGNANCY; }
 	
 };
 

@@ -81,8 +81,10 @@ private:
 	
 	//const char* _fileName;
 	FileTypeClassifier _fileTypeClassifier;
+/*
 	FileTypeClassifier::FILE_TYPE _fileType;
 	const char* _fileTypeName;
+*/
 	
 	// Columns (Fields):
 	// _columnSet provides lookup by name:
@@ -193,11 +195,11 @@ public:
 	void printPedigreeTableAsTabDelimited(std::string filename) const;
 	
 	// get the Table type
-	const TableType getTableType( void ) const { return _tabletype; };
+	TableType getTableType( void ) const { return _tabletype; };
 	std::string getTableTypeAsString(void) const;
 	
 	// get the number of rows
-	const unsigned getNumberOfRows( void ) const { return _rows; };
+	unsigned getNumberOfRows( void ) const { return _rows; };
 	
 	// check if a column exists:
 	bool columnExists(const std::string &name) const;

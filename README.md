@@ -7,6 +7,13 @@ This is a proof-of-concept JavaScript port of
 The port is an automatic translation using
 [Emscripten](https://github.com/kripken/emscripten).
 
+Building
+--------
+
+`source <path>/<to>/emsdk_env.sh`
+
+`make`
+
 Example usage:
 
 ```javascript
@@ -28,7 +35,7 @@ var data = ['m100', 'cs_001', 'm', '.', '.',
             'm114', 'cs_001', 'f', 'm105', 'm106',
             'm112', 'cs_001', 'm', 'm105', 'm106'];
 
-var svg = Madeline.draw(columns, data)
+var svg = Madeline.draw(columns, data);
 ```
 
 

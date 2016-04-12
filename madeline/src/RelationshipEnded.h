@@ -74,9 +74,9 @@ public:
 	//
 	// Get methods not present in base "String" class:
 	//
-	const bool getBoolean( void ) const;
+	bool getBoolean( void ) const;
 	char getBooleanAsChar(void) const;
-	const TYPE getType(void) const;
+	TYPE getType(void) const;
 	
 	static void addRelationshipEndedBooleanMapping(std::string relationshipValue,std::string booleanMapping);
 	static bool isa(std::string inString);

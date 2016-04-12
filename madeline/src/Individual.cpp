@@ -225,7 +225,7 @@ void Individual::_rearrangeMultipleSpouses(std::deque<Individual*>& initial,std:
 //
 // Individual()
 //
-Individual::Individual():_id(),_fatherId(),_motherId(),_gender(){
+Individual::Individual():_id(),_motherId(),_fatherId(),_gender(){
 	
 	_init();
 	
@@ -234,7 +234,7 @@ Individual::Individual():_id(),_fatherId(),_motherId(),_gender(){
 //
 // Individual()
 //
-Individual::Individual(const std::string & id):_id(),_fatherId(),_motherId(),_gender(){ 
+Individual::Individual(const std::string & id):_id(),_motherId(),_fatherId(),_gender(){ 
 	
 	_init();
 	_id.set(id);
@@ -320,7 +320,7 @@ std::string Individual::getRandomId() {
 //
 // getSpouses:
 //
-const std::set<Individual*,Individual::compareIndividual> *const Individual::getSpouses(void) const{
+const std::set<Individual*,Individual::compareIndividual> *Individual::getSpouses(void) const{
 	
 	return &_spouses;
 	
@@ -330,7 +330,7 @@ const std::set<Individual*,Individual::compareIndividual> *const Individual::get
 //
 // getChildren:
 //
-const std::set<Individual*,Individual::compareIndividual> *const Individual::getChildren(void) const{
+const std::set<Individual*,Individual::compareIndividual> *Individual::getChildren(void) const{
 	
 	return &_children;
 	
@@ -770,7 +770,7 @@ void Individual::displayNuclearFamilies(){
 //
 void Individual::display(){
 	
-	std::cout << " IND ID is" << _id << std::endl;
+	//std::cout << " IND ID is" << _id << std::endl;
 	
 }
 
@@ -780,10 +780,10 @@ void Individual::display(){
 void Individual::addSpouse(Individual* spouse){
 	
 	if(_gender.getEnum()==Gender::MALE && spouse->getId()==_motherId){
-		throw Exception("Individual::addSpouse()","%1$s's spouse %2$s is also his mother: Program currently cannot handle mother-son matings.",_id.get().c_str(),_motherId.get().c_str());
+		//throw Exception("Individual::addSpouse()","%1$s's spouse %2$s is also his mother: Program currently cannot handle mother-son matings.",_id.get().c_str(),_motherId.get().c_str());
 	}else
 	if(_gender.getEnum()==Gender::FEMALE && spouse->getId()==_fatherId){
-		throw Exception("Individual::addSpouse()","%1$s's spouse %2$s is also her father: Program currently cannot handle father-daughter matings.",_id.get().c_str(),_fatherId.get().c_str());
+		//throw Exception("Individual::addSpouse()","%1$s's spouse %2$s is also her father: Program currently cannot handle father-daughter matings.",_id.get().c_str(),_fatherId.get().c_str());
 	}else{
 		_spouses.insert(spouse);
 	}

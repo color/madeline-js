@@ -67,7 +67,7 @@ DrawingLabelManager::DrawingLabelManager(){
 //
 void DrawingLabelManager::setLASiWrapper(LASiWrapper* pLASiWrapper){
 	
-	if(pLASiWrapper==0) throw Exception("DrawingLabelManager::setLASiWrapper()","Pointer to LASiWrapper is NULL.");
+	//if(pLASiWrapper==0) throw Exception("DrawingLabelManager::setLASiWrapper()","Pointer to LASiWrapper is NULL.");
 	
 	_pLASiWrapper = pLASiWrapper;
 	
@@ -89,7 +89,7 @@ void DrawingLabelManager::setLabelSet(const LabelSet* labelSet){
 	UTF32 sampleUnicodeValue;
 	
 	// Don't try to dereference a null pointer:
-	if(_pLASiWrapper==0) throw Exception("DrawingLabelManager::setLabelSet()","Pointer to LASiWrapper is NULL. Was setPostscriptDocument() called?");
+	//if(_pLASiWrapper==0) throw Exception("DrawingLabelManager::setLabelSet()","Pointer to LASiWrapper is NULL. Was setPostscriptDocument() called?");
 	
 	//LASi::PostscriptDocument doc;
 	_pLASiWrapper->setFont(DrawingMetrics::getFontFamily().c_str());

@@ -93,7 +93,7 @@ int binaryPatternToInteger(const std::string &pattern){
 //
 bool looksLikeABinaryPattern(const std::string &pattern){
 	
-	for(int i=0;i<pattern.length();i++){
+	for(unsigned i=0;i<pattern.length();i++){
 		if(! (pattern[i]=='0' || pattern[i]=='1') ){
 			return false;
 		}

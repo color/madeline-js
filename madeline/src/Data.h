@@ -30,6 +30,7 @@
 #include <set>
 #include <iostream>
 #include "DataTypes.h"
+#include "Warning.h"
 
 class DataMissingValueLoader;
 class Data {
@@ -94,7 +95,7 @@ public:
 	// of the data value:
 	virtual const std::string get( void ) const =0;
 	// Get the type of data value:
-	virtual const DATATYPE getDataType( void ) const=0;
+	virtual DATATYPE getDataType( void ) const=0;
 	// Virtual copy constructor
 	virtual Data* clone() const = 0;
 	// Virtual operators

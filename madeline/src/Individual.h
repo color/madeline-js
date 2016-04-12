@@ -363,8 +363,8 @@ public:
 	// Getters of Individual connections:
 	std::vector<std::string> getChildrenIds(Individual* spouse);
 	
-	const std::set<Individual*,compareIndividual> *const getSpouses(void) const;
-	const std::set<Individual*,compareIndividual> *const getChildren(void) const;
+	const std::set<Individual*,compareIndividual> *getSpouses(void) const;
+	const std::set<Individual*,compareIndividual> *getChildren(void) const;
 	
 	void getChildrenWithSpouse(Individual* spouse,std::vector<Individual*>& children);
 	void getChildrenSortedByExternalConnections(Individual* spouse,std::vector<Individual*>& children);

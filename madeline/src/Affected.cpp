@@ -62,7 +62,7 @@ void Affected::set(const char *value){
 //
 // Affected::getBoolean
 //
-const bool Affected::getBoolean( void ) const{
+bool Affected::getBoolean( void ) const{
 	
 	return _booleanValue.getBoolean();
 	

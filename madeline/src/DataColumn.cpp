@@ -272,7 +272,7 @@ bool DataColumn::getShowOnIcon(void) const{
 /// This cannot be a const method because it needs
 /// to create the private _uniqueList if not yet present:
 /// 
-const UniqueList *const DataColumn::getUniqueList(void){
+const UniqueList *DataColumn::getUniqueList(void){
 	
 	//
 	// If the list does not yet exist,

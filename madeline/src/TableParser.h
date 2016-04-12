@@ -49,9 +49,9 @@ public:
 	
 	unsigned                              getColumnCount ( void ) const { return _columns;    };
 	unsigned long                         getNumberOfRows( void ) const { return _rows;       };
-	const std::vector<std::string> *const getContents    ( void ) const { return &_element;    };
-	const std::vector<char>        *const getTypes       ( void ) const { return &_columnType; };
-	const std::vector<std::string> *const getTitles      ( void ) const { return &_title;      };
+	const std::vector<std::string> *getContents    ( void ) const { return &_element;    };
+	const std::vector<char>        *getTypes       ( void ) const { return &_columnType; };
+	const std::vector<std::string> *getTitles      ( void ) const { return &_title;      };
 	
 };
 

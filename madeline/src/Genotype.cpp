@@ -180,7 +180,7 @@ void Genotype::_readAllele(const char *s,unsigned &v1,unsigned &v2){
 ///
 const char* Genotype::_setAllele(const char* s, unsigned &allele,unsigned &partial, bool &snp){
 	
-	char *d;
+	//char *d;
 	
 	// skip white space preceding the allele:
 	for(;*s && (*s==' ' || *s=='\t');s++);

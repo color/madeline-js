@@ -33,7 +33,6 @@
 #include "Number.h"
 #include "String.h"
 #include "Boolean.h"
-#include "Warning.h"
 //! Variable class implements variables
 /*! Variable is a virtual base class. Scalar and AssociativeArray classes are derived from it.
 */

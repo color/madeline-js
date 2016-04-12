@@ -123,11 +123,13 @@ DataTable::DataTable(TableParser &parser){
 			//
 			// Throw exception if the subsequent column is not a matching allele column:
 			//
+			/*
 			if(i==_columns-1 || _finalTypes[i+1]!=ALLELE || titles[i]!=titles[i+1]){
 
 				throw Exception("DataTable::DataTable()","Because column %i. %s is declared as an ALLELE column, the subsequent column must be a matching ALLELE column.",(i+1),titles[i].c_str() );
 
 			}
+			*/
 			//
 			// Insert into columnSet both columns,
 			// making both columns genotypes column,
@@ -141,8 +143,8 @@ DataTable::DataTable(TableParser &parser){
 			//
 			// Check for duplicated column titles:
 			//
-			if(!thisPair.second) throw Exception("DataTable::DataTable()","Column %i. %s appears to have the same name as a previous column.",(i+1),titles[i].c_str()            );
-			if(!nextPair.second) throw Exception("DataTable::DataTable()","Column %i. %s appears to have the same name as a previous column.",(i+2),SecondAlleleColumnTitle.c_str() );
+			//if(!thisPair.second) throw Exception("DataTable::DataTable()","Column %i. %s appears to have the same name as a previous column.",(i+1),titles[i].c_str()            );
+			//if(!nextPair.second) throw Exception("DataTable::DataTable()","Column %i. %s appears to have the same name as a previous column.",(i+2),SecondAlleleColumnTitle.c_str() );
 			//
 			// Add both also into columnVector:
 			//
@@ -182,12 +184,14 @@ DataTable::DataTable(TableParser &parser){
 			// Check for the rare but possible case of
 			// duplicated column titles:
 			//
+			/*
 			if(!thisPair.second){
 				//
 				// Not allowed:
 				//
 				throw Exception("DataTable::DataTable()","Column %i. %s appears to have the same name as a previous column.",(i+1),titles[i].c_str() );
 			}
+			*/
 			//
 			// ... and also into columnVector:
 			//
@@ -708,7 +712,8 @@ unsigned DataTable::getColumnOrdinal ( const char *name ) const{
 	if(p!=_columnSet.end()){
 		return (*p)->getOrdinal();
 	}else{
-		throw Exception("dataTable::getColumnOrdinal()","Column does not exist.");
+		//throw Exception("dataTable::getColumnOrdinal()","Column does not exist.");
+		return 0;
 	}
 
 }
@@ -719,11 +724,12 @@ unsigned DataTable::getColumnOrdinal ( const char *name ) const{
 std::string DataTable::getColumnName ( unsigned ordinal ) const{
 
 
+/*
 	if( ordinal >= _columnSet.size() ){
 		//std::cerr << "Ordinal=" << ordinal << " but columnSet.size=" << _columnSet.size() << std::endl;
 		throw Exception("dataTable::getColumnName()","Ordinal is out of range");
 	}
-
+*/
 	std::set<DataColumn *,ltstr>::iterator it = _columnVector[ordinal];
 
 	return (*it)->getName();
@@ -744,11 +750,12 @@ unsigned DataTable::getNumberOfColumns( void ) const {
 ///
 DataColumn *DataTable::getColumn( unsigned ordinal ) const{
 
+/*
 	if( ordinal >= _columnSet.size() ){
 		//std::cerr << "Ordinal=" << ordinal << " but columnSet.size=" << _columnSet.size() << std::endl;
 		throw Exception("DataTable::getColumn()","Ordinal is out of range");
 	}
-
+*/
 	const std::set<DataColumn *,ltstr>::iterator it = _columnVector[ordinal];
 
 	return (*it);
@@ -767,8 +774,9 @@ DataColumn *DataTable::getColumn(const std::string &name ) const{
 		return (*p);
 	}else{
 		delete tempdc;
-		std::cout << name << std::endl;
-		throw Exception("DataTable::getColumn()","Column %s does not exist.",name.c_str());
+		//std::cout << name << std::endl;
+		//throw Exception("DataTable::getColumn()","Column %s does not exist.",name.c_str());
+		return 0;
 	}
 
 }

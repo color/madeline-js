@@ -73,7 +73,7 @@ void RelationshipEnded::set(const char *value){
 //
 // RelationshipEnded::getBoolean
 //
-const bool RelationshipEnded::getBoolean( void ) const{
+bool RelationshipEnded::getBoolean( void ) const{
 	
 	return _booleanValue.getBoolean();
 	
@@ -91,7 +91,7 @@ char RelationshipEnded::getBooleanAsChar( void ) const{
 //
 // getType
 //
-const RelationshipEnded::TYPE RelationshipEnded::getType(void) const{
+RelationshipEnded::TYPE RelationshipEnded::getType(void) const{
 	
 	return _type;
 	

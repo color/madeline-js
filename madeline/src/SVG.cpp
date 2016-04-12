@@ -34,7 +34,7 @@
 //
 // drawLine:
 //
-void SVG::drawLine(std::ostringstream& os, double x1,double y1,double x2,double y2,const std::string& cssClass,const std::string& id){
+void SVG::drawLine(std::ostringstream& os, double x1,double y1,double x2,double y2,const std::string& ,const std::string& ){
 	
 	os  << "  <line x1=\"" << x1 << "\" y1=\"" << y1 << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
 	
@@ -43,7 +43,7 @@ void SVG::drawLine(std::ostringstream& os, double x1,double y1,double x2,double 
 //
 // drawHorizontalLine:
 //
-void SVG::drawHorizontalLine(std::ostringstream& os,double y, double x1, double x2,const std::string& cssClass,const std::string& id){
+void SVG::drawHorizontalLine(std::ostringstream& os,double y, double x1, double x2,const std::string& ,const std::string& ){
 	
 	 os << "  <line x1=\"" << x1 << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y << "\" />\n";
 	
@@ -76,7 +76,7 @@ void SVG::drawPolyline(std::ostringstream& os,const std::string points,const std
 //
 // drawText:
 //
-void SVG::drawText(std::ostringstream& os,double x,double y,std::string text,const std::string& cssClass,const std::string& id){
+void SVG::drawText(std::ostringstream& os,double x,double y,std::string text,const std::string& cssClass,const std::string& ){
 	
 	os << "  <text x=\"" << x << "\" y=\"" << y << "\" text-anchor=\"middle\" ";
 	if(cssClass!="") os << " class=\"" << cssClass << "\" ";
@@ -87,7 +87,7 @@ void SVG::drawText(std::ostringstream& os,double x,double y,std::string text,con
 //
 // drawRectangle:
 //
-void SVG::drawRectangle(std::ostringstream& os,double x,double y,double width,double height,const std::string& cssClass,const std::string& id,const std::string& style){
+void SVG::drawRectangle(std::ostringstream& os,double x,double y,double width,double height,const std::string& cssClass,const std::string& ,const std::string& style){
 	
 	os  << "  <rect  x=\"" << x << "\" y=\"" << y << "\" width=\"" << width << "\" height=\"" << height << "\" ";
 	if(style != std::string("")) os << "style=\"" << style << "\" ";
@@ -99,7 +99,7 @@ void SVG::drawRectangle(std::ostringstream& os,double x,double y,double width,do
 //
 // startGroup:
 //
-void SVG::startGroup(std::ostringstream& os,const std::string& cssClass,const std::string& id){
+void SVG::startGroup(std::ostringstream& os,const std::string& cssClass,const std::string& ){
 	
 	os << "  <g"; 
 	if(cssClass!=std::string("")) os << " class=\"" << cssClass << "\"";
@@ -248,7 +248,7 @@ void SVG::drawGenderUnknownIconEdge(std::ostringstream& os,double x, double y){
 	
 	double c          = DrawingMetrics::getIconDiameter();
 	double d          = c / M_SQRT2;
-	double r          = DrawingMetrics::getIconRadius() / M_SQRT2;
+	//double r          = DrawingMetrics::getIconRadius() / M_SQRT2;
 	double offset     = 0.5 * DrawingMetrics::getScalingFactor();
 	double edgeOffset = offset / M_SQRT2;
 	y -= d;

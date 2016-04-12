@@ -73,7 +73,7 @@ void Sterility::set(const char *value){
 //
 // Sterility::getBoolean
 //
-const bool Sterility::getBoolean( void ) const{
+bool Sterility::getBoolean( void ) const{
 	
 	return _booleanValue.getBoolean();
 	
@@ -91,7 +91,7 @@ char Sterility::getBooleanAsChar( void ) const{
 //
 // getType
 //
-const Sterility::TYPE Sterility::getType(void) const{
+Sterility::TYPE Sterility::getType(void) const{
 	
 	return _type;
 	

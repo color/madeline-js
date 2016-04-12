@@ -81,7 +81,7 @@ public:
 	DataTable * getTable(unsigned i) { return _tables[i];}      /// returns a specific datatable
 
 
-	const int getNumberOfTables( void ) const { return _tables.size(); };
+	int getNumberOfTables( void ) const { return _tables.size(); };
 
 	std::string getName(void) const { return _fileName; };
 

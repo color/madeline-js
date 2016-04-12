@@ -67,6 +67,7 @@ Message::Message(const char *const methodName, const char *format,...){
 // print()
 //
 void Message::print(void){
+/*
 	
 	std::cerr << vt100::startRed;
 	std::cerr << _salutation << ": ";
@@ -78,6 +79,7 @@ void Message::print(void){
 	if(_truncated){
 		std::cerr << gettext("(Message has been truncated)") << std::endl;
 	}
+*/
 }
 
 //

@@ -84,7 +84,7 @@ public:
 	bool operator>(const String& b) const;
 
 	// Added on 2005-07-17	
-	const DATATYPE getDataType( void ) const { return STRING; }
+	DATATYPE getDataType( void ) const { return STRING; }
 	virtual String* clone() const;
 	
 	char operator[](unsigned int n);

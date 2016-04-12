@@ -74,7 +74,7 @@ public:
 	// Additional Setters/Getters not present in virtual base class:
 	//
 	void set(PROBAND proband);
-	const PROBAND getEnum( void ) const { if(_isMissing) return Proband::MISSING; if(_value) return Proband::IS_PROBAND; else return NOT_PROBAND; }
+	PROBAND getEnum( void ) const { if(_isMissing) return Proband::MISSING; if(_value) return Proband::IS_PROBAND; else return NOT_PROBAND; }
 	
 };
 

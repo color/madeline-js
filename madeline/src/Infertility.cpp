@@ -73,7 +73,7 @@ void Infertility::set(const char *value){
 //
 // Infertility::getBoolean
 //
-const bool Infertility::getBoolean( void ) const{
+bool Infertility::getBoolean( void ) const{
 	
 	return _booleanValue.getBoolean();
 	
@@ -91,7 +91,7 @@ char Infertility::getBooleanAsChar( void ) const{
 //
 // getType
 //
-const Infertility::TYPE Infertility::getType(void) const{
+Infertility::TYPE Infertility::getType(void) const{
 	
 	return _type;
 	

@@ -76,12 +76,12 @@ public:
 	// Additional Setters/Getters not present in virtual base class:
 	//
 	virtual void set(const bool value) { _value=value; _isMissing = false; }
-	virtual const bool getBoolean( void ) const { if(_isMissing) return false; return _value; }
+	virtual bool getBoolean( void ) const { if(_isMissing) return false; return _value; }
 	
 	bool operator==(const Data& b) const;
 	bool operator<(const Data& b) const;
 	virtual Boolean* clone() const;
-	const DATATYPE getDataType( void ) const { return BOOLEAN; }
+	DATATYPE getDataType( void ) const { return BOOLEAN; }
 	
 };
 

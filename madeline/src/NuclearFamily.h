@@ -86,7 +86,7 @@ public:
 	void setLeftWidth(unsigned left){ _width.setLeft(left); }
 	void setRightWidth(unsigned right){ _width.setRight(right); }
 	void setTwinGroupCount(unsigned twinGroupCount) { _twinGroupCount=twinGroupCount; }
-	void setLeftConnectionShiftFlag(bool value) { _leftConnectionShiftFlag = true; }
+	void setLeftConnectionShiftFlag(bool value) { _leftConnectionShiftFlag = value; }
 	
 	//
 	// Getters:

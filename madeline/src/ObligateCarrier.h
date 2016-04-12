@@ -74,7 +74,7 @@ public:
 	// Additional Setters/Getters not present in virtual base class:
 	//
 	void set(OBLIGATE_CARRIER carrier);
-	const OBLIGATE_CARRIER getEnum( void ) const { if(_isMissing) return ObligateCarrier::MISSING; if(_value) return ObligateCarrier::IS_OBLIGATE_CARRIER; else return ObligateCarrier::NOT_OBLIGATE_CARRIER; }
+	OBLIGATE_CARRIER getEnum( void ) const { if(_isMissing) return ObligateCarrier::MISSING; if(_value) return ObligateCarrier::IS_OBLIGATE_CARRIER; else return ObligateCarrier::NOT_OBLIGATE_CARRIER; }
 	
 };
 

@@ -51,11 +51,11 @@ private:
 	int _genotypeCounter;
 	int _genderCounter;
 	int _totalCounter;
-	
+	/*
 	const char *test;
 	const char *_stt;
 	const char *_end;
-	
+	*/
 	
 	bool _isEmptyOrDot(const char *p, int stt, int end);
 	bool _isGender    (const char *p, int stt, int end);

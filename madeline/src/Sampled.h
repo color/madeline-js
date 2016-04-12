@@ -72,7 +72,7 @@ public:
 	// Additional Setters/Getters not present in virtual base class:
 	//
 	void set(SAMPLED sampled);
-	const SAMPLED getEnum( void ) const { if(_isMissing) return Sampled::MISSING; if(_value) return Sampled::IS_SAMPLED; else return Sampled::NOT_SAMPLED; }
+	SAMPLED getEnum( void ) const { if(_isMissing) return Sampled::MISSING; if(_value) return Sampled::IS_SAMPLED; else return Sampled::NOT_SAMPLED; }
 	
 };
 

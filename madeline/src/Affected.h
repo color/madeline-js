@@ -67,7 +67,7 @@ public:
 	//
 	// Get methods not present in base "String" class:
 	//
-	const bool getBoolean( void ) const;
+	bool getBoolean( void ) const;
 	char getBooleanAsChar(void) const;
 	
 	static void addAffectedBooleanMapping(std::string affectedValue,std::string booleanMapping);

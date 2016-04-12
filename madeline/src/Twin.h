@@ -118,7 +118,7 @@ public:
 	// Get methods not present in base "String" class:
 	//
 	const std::string getTwinType( void ) const;
-	const TWIN_TYPE getTwinTypeEnum( void ) const { return _twinType; }
+	TWIN_TYPE getTwinTypeEnum( void ) const { return _twinType; }
 	// Returns the marker that includes the distinguishing twin type character between twin types:
 	const std::string getMarker( void ) const { return String::get(); }
 	
