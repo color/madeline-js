@@ -1,17 +1,98 @@
-Madeline = require('./madeline.js');
+var Madeline = require('./madeline.js');
 
-var columns = ['Individualid', 'Familyid', 'Gender', 'Mother', 'Father', 'DZTwin', 'MZTwin', 'DOB', 'Affected'];
-var data = ['m100', 'test', 'f', '.', '.', '.', '.', '.', 'a',
-            'm101', 'test', 'm', '.', '.', '.', '.', '.', 'b',
-            'm102', 'test', 'f', '.', '.', '.', '.', '.', 'c',
-            'm103', 'test', '', 'm100', 'm101', '.', 'test', '.', 'a',
-            'm104', 'test', 'f', 'm102', 'm101', '.', '', '.', 'b',
-            'm105', 'test', '', 'm100', 'm101', '.', 'test', '.', 'c',
-            'm106', 'test', 'm', '', '', '.', '', '.', '',
-            'm107', 'test', '', 'm104', 'm106', 'rest', '', '', '',
-            'm108', 'test', '', 'm104', 'm106', 'rest', '', '', ''
-            ];
+var individuals = [
+  {
+    IndividualId: 'm100',
+    Familyid: 'test',
+    Gender: 'f',
+    Mother: '.',
+    Father: '.',
+    DZTwin: '.',
+    MZTwin: '.',
+    DOB: '.',
+    Affected: 'a'
+  }, {
+    IndividualId: 'm101',
+    Familyid: 'test',
+    Gender: 'm',
+    Mother: '.',
+    Father: '.',
+    DZTwin: '.',
+    MZTwin: '.',
+    DOB: '.',
+    Affected: 'b'
+  }, {
+    IndividualId: 'm102',
+    Familyid: 'test',
+    Gender: 'f',
+    Mother: '.',
+    Father: '.',
+    DZTwin: '.',
+    MZTwin: '.',
+    DOB: '.',
+    Affected: 'c'
+  }, {
+    IndividualId: 'm103',
+    Familyid: 'test',
+    Gender: '',
+    Mother: 'm100',
+    Father: 'm101',
+    DZTwin: '.',
+    MZTwin: 'test',
+    DOB: '.',
+    Affected: 'a'
+  }, {
+    IndividualId: 'm104',
+    Familyid: 'test',
+    Gender: 'f',
+    Mother: 'm102',
+    Father: 'm101',
+    DZTwin: '.',
+    MZTwin: '.',
+    DOB: '.',
+    Affected: 'b'
+  }, {
+    IndividualId: 'm105',
+    Familyid: 'test',
+    Gender: '',
+    Mother: 'm100',
+    Father: 'm101',
+    DZTwin: '.',
+    MZTwin: 'test',
+    DOB: '.',
+    Affected: 'c'
+  }, {
+    IndividualId: 'm106',
+    Familyid: 'test',
+    Gender: 'm',
+    Mother: '.',
+    Father: '.',
+    DZTwin: '.',
+    MZTwin: '.',
+    DOB: '.',
+    Affected: ''
+  }, {
+    IndividualId: 'm107',
+    Familyid: 'test',
+    Gender: '',
+    Mother: 'm104',
+    Father: 'm106',
+    DZTwin: 'rest',
+    MZTwin: '',
+    DOB: '',
+    Affected: 'a'
+  }, {
+    IndividualId: 'm108',
+    Familyid: 'test',
+    Gender: '',
+    Mother: 'm104',
+    Father: 'm106',
+    DZTwin: 'rest',
+    MZTwin: '',
+    DOB: '.',
+    Affected: 'a'
+  }
+];
 
-var svg = Madeline.draw(columns, data);
+var svg = Madeline.draw(individuals);
 console.log(svg);
-
