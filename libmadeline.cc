@@ -8,8 +8,6 @@
 #include "madeline/src/PedigreeSet.h"
 
 
-#include <cstdio>
-
 std::string pedigree_SVG(emscripten::val header, emscripten::val content)
 {
     DrawingMetrics::setColor(true);
