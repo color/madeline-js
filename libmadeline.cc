@@ -31,7 +31,7 @@ std::string pedigree_SVG(emscripten::val header, emscripten::val content)
         std::vector<std::string> labels;
         std::string sortField = "";
 
-        // labels.push_back(emscripten::vecFromJSArray<std::string>(header).front());
+        labels.push_back(emscripten::vecFromJSArray<std::string>(header).front());
         dataTable->toggleColumnsForPedigree(labels);
         pedigreeSet.addPedigreesFromDataTable(dataTable, 0, sortField);
         return pedigreeSet.draw(dataTable);
