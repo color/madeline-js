@@ -131,7 +131,7 @@ void Pedigree::_setIndividualTwinField(const DataColumn* twinColumn,char type){
 		}
 		// NOTE: This number has been arbitrarily set to 12 for a twinGroup
 		if(mit->second.size() > 12){
-			// throw Exception("setIndividualTwinField()","Check the Twin Marker field. There are more than 12 people with the same marker %s",mit->first.c_str());
+			Warning("setIndividualTwinField()","Check the Twin Marker field. There are more than 12 people with the same marker %s",mit->first.c_str());
 		}
 		++mit;
 	}
@@ -241,7 +241,7 @@ void Pedigree::_addNuclearFamily(Individual* mother, Individual* father){
 					if(mit != _twinMarkers.end()){
 						twinGroupCount++;
 						if(mit->second.size() > children.size()){
-							//throw Exception("addNuclearFamily()","More than one Nuclear Family has the same Twin marker %s",mit->first.c_str());
+							Warning("addNuclearFamily()","More than one Nuclear Family has the same Twin marker %s",mit->first.c_str());
 						}
 						for(unsigned i=0;i<mit->second.size();i++){
 							
@@ -293,7 +293,7 @@ void Pedigree::_checkParentsGender(Individual* individual){
 				if((*it)->getGender().getEnum() == Gender::FEMALE){
 					++it; cnt++; continue;
 				}else{
-					//throw Exception("Pedigree::_checkParentsGender()","Conflicting gender for Individual %s.",father->getId().get().c_str());
+					Warning("Pedigree::_checkParentsGender()","Conflicting gender for Individual %s.",father->getId().get().c_str());
 					//Warning(methodName,"Pedigree %s will be ignored for further queries.",_id.c_str());
 					return;
 				}
@@ -326,7 +326,7 @@ void Pedigree::_checkParentsGender(Individual* individual){
 				if((*it)->getGender().getEnum() == Gender::MALE){
 					++it; cnt++; continue;
 				}else{
-					//throw Exception("Pedigree::_checkParentsGender()","Conflicting gender for Individual %s.",mother->getId().get().c_str());
+					Warning("Pedigree::_checkParentsGender()","Conflicting gender for Individual %s.",mother->getId().get().c_str());
 					return;
 				}
 			}
@@ -1959,7 +1959,7 @@ Individual * Pedigree::addIndividual(const std::string &ind,std::string mother,s
 				Warning(methodName,"Both mother and father have the same id. Father of %s set to MISSING.",ind.c_str());
 			}
 		}else{
-			//throw Exception("addIndividual()","Both mother and father of %s have the same id. For founders use '.' as the id.",ind.c_str());
+			Warning("addIndividual()","Both mother and father of %s have the same id. For founders use '.' as the id.",ind.c_str());
 		}
 	}else if(ind == mother || ind == father){
 		//
@@ -1993,7 +1993,7 @@ Individual * Pedigree::addIndividual(const std::string &ind,std::string mother,s
 			(*iit.first)->setPedigreeDataTable(&pedigreeTable);
 			return *iit.first;
 		}else{
-			//throw Exception(methodName,"Unable to add individual %1$s to pedigree %2$s",ind.c_str(),_id.c_str());
+			Warning(methodName,"Unable to add individual %1$s to pedigree %2$s",ind.c_str(),_id.c_str());
 		}
 	}else{
 		//
@@ -2899,7 +2899,7 @@ void Pedigree::checkForAncestorDescendantAnomoly(Individual *ancestor){
 			for(an_it = _anomolous.begin();an_it!=_anomolous.end();an_it++){
 				Warning("Pedigree::checkForAncestorDescendantAnomoly()","Individual %s is part of an impossible ancestor-descendant loop!",(*an_it)->getId().get().c_str() );
 			}
-			//throw Exception("Pedigree::checkForAncestorDescendantAnomoly()","An impossible ancestor-is-also-descendant loop exists in the data file.");
+			Warning("Pedigree::checkForAncestorDescendantAnomoly()","An impossible ancestor-is-also-descendant loop exists in the data file.");
 		}else{
 			//
 			// Keep tabs on all participants who may be in an anomalous ancestor-is-also-descendant loop.

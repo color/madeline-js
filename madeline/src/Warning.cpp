@@ -71,20 +71,20 @@ void Warning::suppressWarnings(bool suppressWarnings){
 // print()
 //
 void Warning::print(void){
-	/*
-	std::cerr << vt100::startRed ;
+
+	//std::cerr << vt100::startRed ;
 	std::cerr << _salutation << ": ";
-	std::cerr << vt100::stopColor;
+	//std::cerr << vt100::stopColor;
 	if(Debug::DEBUG){
-		std::cerr << vt100::startGreen ;
+		//std::cerr << vt100::startGreen ;
 		std::cerr << _methodName << ": ";
-		std::cerr << vt100::stopColor  ;
+		//std::cerr << vt100::stopColor  ;
 	}
 	std::cerr << _message << std::endl;
 	if(_truncated){
 		std::cerr << gettext("(Message has been truncated)") << std::endl;
 	}
-	*/
+
 }
 
 

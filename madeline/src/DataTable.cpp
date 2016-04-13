@@ -143,8 +143,8 @@ DataTable::DataTable(TableParser &parser){
 			//
 			// Check for duplicated column titles:
 			//
-			//if(!thisPair.second) throw Exception("DataTable::DataTable()","Column %i. %s appears to have the same name as a previous column.",(i+1),titles[i].c_str()            );
-			//if(!nextPair.second) throw Exception("DataTable::DataTable()","Column %i. %s appears to have the same name as a previous column.",(i+2),SecondAlleleColumnTitle.c_str() );
+			if(!thisPair.second) Warning("DataTable::DataTable()","Column %i. %s appears to have the same name as a previous column.",(i+1),titles[i].c_str()            );
+			if(!nextPair.second) Warning("DataTable::DataTable()","Column %i. %s appears to have the same name as a previous column.",(i+2),SecondAlleleColumnTitle.c_str() );
 			//
 			// Add both also into columnVector:
 			//
@@ -712,7 +712,7 @@ unsigned DataTable::getColumnOrdinal ( const char *name ) const{
 	if(p!=_columnSet.end()){
 		return (*p)->getOrdinal();
 	}else{
-		//throw Exception("dataTable::getColumnOrdinal()","Column does not exist.");
+		Warning("dataTable::getColumnOrdinal()","Column does not exist.");
 		return 0;
 	}
 
@@ -775,7 +775,7 @@ DataColumn *DataTable::getColumn(const std::string &name ) const{
 	}else{
 		delete tempdc;
 		//std::cout << name << std::endl;
-		//throw Exception("DataTable::getColumn()","Column %s does not exist.",name.c_str());
+		Warning("DataTable::getColumn()","Column %s does not exist.",name.c_str());
 		return 0;
 	}
 
