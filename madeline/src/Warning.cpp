@@ -71,7 +71,7 @@ void Warning::suppressWarnings(bool suppressWarnings){
 // print()
 //
 void Warning::print(void){
-	
+	/*
 	std::cerr << vt100::startRed ;
 	std::cerr << _salutation << ": ";
 	std::cerr << vt100::stopColor;
@@ -84,6 +84,7 @@ void Warning::print(void){
 	if(_truncated){
 		std::cerr << gettext("(Message has been truncated)") << std::endl;
 	}
+	*/
 }
 
 
