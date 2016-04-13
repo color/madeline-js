@@ -47,6 +47,8 @@ const std::string Twin::getTwinType( void ) const {
 // _validateTwinMarker():
 //
 bool Twin::_validateTwinMarker(std::string twinMarker){
+
+    return true;
 	if(twinMarker == ".") return true;
 	if(twinMarker.size() == 1 && isalpha(twinMarker[0]))
 		return true;
