@@ -58,7 +58,13 @@ void SVG::drawVerticalLine(std::ostringstream& os,double x, double y1, double y2
 	if(cssClass != std::string("") ) os << "class=\"" << cssClass <<"\" ";
 	if(id        != std::string("") ) os << "id=\"mating-"    << id    <<"\" ";
 	os << "x1=\"" << x << "\" y1=\"" << y1 << "\" x2=\"" << x << "\" y2=\"" << y2 << "\" />\n";
-	
+
+    if (id != "")
+    {
+        os << "  <line class=\"mating-capt\" id=\"mating-capt-" << id << "\" "
+           << "x1=\"" << x << "\" y1=\"" << y1 << "\" x2=\"" << x << "\" y2=\"" << y2 << "\" />\n";
+    } // if
+
 }
 
 //
