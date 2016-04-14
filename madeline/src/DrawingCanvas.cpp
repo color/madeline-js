@@ -137,7 +137,7 @@ void DrawingCanvas::_setHeader(){
 	//
 	// Append the CSS:
 	//
-	_setCSS();
+	//_setCSS();
 
 	//
 	// Append the Javascript
