@@ -54,17 +54,20 @@ void SVG::drawHorizontalLine(std::ostringstream& os,double y, double x1, double 
 //
 void SVG::drawVerticalLine(std::ostringstream& os,double x, double y1, double y2,const std::string & cssClass, const std::string & id){
 	
-	os << "  <line ";
-	if(cssClass != std::string("") ) os << "class=\"" << cssClass <<"\" ";
-	if(id        != std::string("") ) os << "id=\"mating-"    << id    <<"\" ";
-	os << "x1=\"" << x << "\" y1=\"" << y1 << "\" x2=\"" << x << "\" y2=\"" << y2 << "\" />\n";
-
-    if (id != "")
+	
+    if (cssClass == "mating")
     {
-        os << "  <line class=\"mating-capt\" id=\"mating-capt-" << id << "\" "
-           << "x1=\"" << x << "\" y1=\"" << y1 << "\" x2=\"" << x << "\" y2=\"" << y2 << "\" />\n";
+        os << "<g class=\"mating\" id=\"mating-" << id << "\">\n"
+           << "  <line class=\"mating-ghost\" x1=\"" << x << "\" y1=\"" << y1 << "\" x2=\"" << x << "\" y2=\"" << y2 << "\" />\n"
+           << "  <line class=\"mating-normal\" x1=\"" << x << "\" y1=\"" << y1 << "\" x2=\"" << x << "\" y2=\"" << y2 << "\" />\n"
+           << "</g>\n";
+        return;
     } // if
 
+	os << "  <line ";
+	if(cssClass != std::string("") ) os << "class=\"" << cssClass <<"\" ";
+	if(id        != std::string("") ) os << "id=\""    << id    <<"\" ";
+	os << "x1=\"" << x << "\" y1=\"" << y1 << "\" x2=\"" << x << "\" y2=\"" << y2 << "\" />\n";
 }
 
 //
