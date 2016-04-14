@@ -89,10 +89,10 @@ var individuals = [
     Father: 'm106',
     DZTwin: 'rest',
     MZTwin: '',
-    DOB: '.',
+    DOB: '12/12/12',
     Affected: 'a'
   }
 ];
 
-var svg = Madeline.draw(individuals);
+var svg = Madeline.draw(individuals, ['individualid', 'DOB']);
 console.log(svg);

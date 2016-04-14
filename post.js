@@ -15,7 +15,7 @@
     return a.concat(b);
   });
 
-  svg = madeline.draw(columns, data);
+  svg = madeline.draw(columns, data, labels);
 
   if (!svg) {
     console.warn('Could not render pedigree with Madeline.');

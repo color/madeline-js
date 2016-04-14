@@ -8,7 +8,9 @@
 #include "madeline/src/PedigreeSet.h"
 
 
-std::string pedigree_SVG(emscripten::val header, emscripten::val content)
+std::string pedigree_SVG(emscripten::val header,
+                         emscripten::val content,
+                         emscripten::val labels)
 {
     DrawingMetrics::setColor(true);
     DrawingMetrics::setEmbeddedState(true);
@@ -28,11 +30,9 @@ std::string pedigree_SVG(emscripten::val header, emscripten::val content)
     if (dataTable->getTableType() == DataTable::PEDIGREE)
     {
         PedigreeSet pedigreeSet;
-        std::vector<std::string> labels;
         std::string sortField = "";
 
-        labels.push_back(emscripten::vecFromJSArray<std::string>(header).front());
-        dataTable->toggleColumnsForPedigree(labels);
+        dataTable->toggleColumnsForPedigree(emscripten::vecFromJSArray<std::string>(labels));
         pedigreeSet.addPedigreesFromDataTable(dataTable, 0, sortField);
         return pedigreeSet.draw(dataTable);
     } // if
