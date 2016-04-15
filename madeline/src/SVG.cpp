@@ -87,6 +87,7 @@ void SVG::drawPolyline(std::ostringstream& os,const std::string points,const std
 //
 void SVG::drawText(std::ostringstream& os,double x,double y,std::string text,const std::string& cssClass,const std::string& ){
 	
+	if (text == ".") return;
 	os << "  <text x=\"" << x << "\" y=\"" << y << "\" text-anchor=\"middle\" ";
 	if(cssClass!="") os << " class=\"" << cssClass << "\" ";
 	os << ">" << text << "</text>\n";
