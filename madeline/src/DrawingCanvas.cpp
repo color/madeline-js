@@ -1354,9 +1354,9 @@ void DrawingCanvas::drawLabelSet(Individual* pIndividual){
 	//
 	double y = pIndividual->getY() +
 	           DrawingMetrics::getIconRadius()  +
-	           DrawingMetrics::getLabelMargin() +
-	           DrawingMetrics::getYMaximum()    +
-	           DrawingMetrics::getLineHeight();
+	           DrawingMetrics::getLabelMargin() ; //+
+	           //DrawingMetrics::getYMaximum()    ;//+
+	           //DrawingMetrics::getLineHeight();
 
 	//
 	// By default just the individualId is displayed:
