@@ -14,6 +14,7 @@ std::string pedigree_SVG(emscripten::val header,
 {
     DrawingMetrics::setColor(true);
     DrawingMetrics::setEmbeddedState(true);
+    DrawingMetrics::setNoLabelTruncation(true);
     DrawingMetrics::setScalableState(false);
 
     if (emscripten::vecFromJSArray<std::string>(header).size() == 0 ||
