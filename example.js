@@ -4,95 +4,68 @@ var individuals = [
   {
     IndividualId: 'm100',
     Familyid: 'test',
+    Name: 'm100',
     Gender: 'f',
-    Mother: '.',
-    Father: '.',
-    DZTwin: '.',
-    MZTwin: '.',
-    DOB: '.',
     Affected: 'a'
   }, {
     IndividualId: 'm101',
     Familyid: 'test',
+    Name: 'John Doe',
     Gender: 'm',
-    Mother: '.',
-    Father: '.',
-    DZTwin: '.',
-    MZTwin: '.',
-    DOB: '.',
     Affected: 'b'
   }, {
     IndividualId: 'm102',
     Familyid: 'test',
+    Name: 'm102',
     Gender: 'f',
-    Mother: '.',
-    Father: '.',
-    DZTwin: '.',
-    MZTwin: '.',
-    DOB: '.',
     Affected: 'c'
   }, {
     IndividualId: 'm103',
     Familyid: 'test',
-    Gender: '',
+    Name: 'm103',
     Mother: 'm100',
     Father: 'm101',
-    DZTwin: '.',
     MZTwin: 'test',
-    DOB: '.',
     Affected: 'a'
   }, {
     IndividualId: 'm104',
     Familyid: 'test',
+    Name: 'm104',
     Gender: 'f',
     Mother: 'm102',
     Father: 'm101',
-    DZTwin: '.',
-    MZTwin: '.',
-    DOB: '.',
     Affected: 'b'
   }, {
     IndividualId: 'm105',
     Familyid: 'test',
-    Gender: '',
+    Name: 'm105',
     Mother: 'm100',
     Father: 'm101',
-    DZTwin: '.',
     MZTwin: 'test',
-    DOB: '.',
     Affected: 'c'
   }, {
     IndividualId: 'm106',
     Familyid: 'test',
     Gender: 'm',
-    Mother: '.',
-    Father: '.',
-    DZTwin: '.',
-    MZTwin: '.',
-    DOB: '.',
-    Affected: ''
   }, {
     IndividualId: 'm107',
     Familyid: 'test',
-    Gender: '',
+    Name: 'm107',
     Mother: 'm104',
     Father: 'm106',
     DZTwin: 'rest',
-    MZTwin: '',
-    DOB: '',
     Affected: 'a'
   }, {
     IndividualId: 'm108',
     Familyid: 'test',
-    Gender: '',
+    Name: 'm108',
     Mother: 'm104',
     Father: 'm106',
     DZTwin: 'rest',
-    MZTwin: '',
     DOB: '12/12/12',
     Affected: 'a'
   }
 ];
 
-var svg = Madeline.draw(individuals, ['individualid', 'DOB']);
+var svg = Madeline.draw(individuals, ['name', 'DOB']);
 console.log(svg);
