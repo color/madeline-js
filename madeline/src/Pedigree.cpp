@@ -2003,6 +2003,7 @@ Individual * Pedigree::addIndividual(const std::string &ind,std::string mother,s
 		delete newCandidateIndividual;
 		return *it;
 	}
+    return 0;
 }
 
 ///
