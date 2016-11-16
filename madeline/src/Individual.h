@@ -1,23 +1,23 @@
 /////////////////////////////////////////////////////////
 //
-// This file is part of the MADELINE 2 program 
+// This file is part of the MADELINE 2 program
 // written by Edward H. Trager, Ritu Khanna, and Adrian Marrs
 // Copyright (c) 2005 by the
 // Regents of the University of Michigan.
 // All Rights Reserved.
-// 
+//
 // The latest version of this program is available from:
-// 
+//
 //   http://eyegene.ophthy.med.umich.edu/madeline/
-//   
+//
 // Released under the GNU General Public License.
 // A copy of the GPL is included in the distribution
 // package of this software, or see:
-// 
+//
 //   http://www.gnu.org/copyleft/
-//   
+//
 // ... for licensing details.
-// 
+//
 /////////////////////////////////////////////////////////
 //
 // 2005.08.31.ET
@@ -58,13 +58,13 @@
 class NuclearFamily;
 
 class Individual{
-	
+
 private:
-	
+
 	inline void _init(void);
 	void _checkForSpecialIndividualTypes(void);
 	void _rearrangeMultipleSpouses(std::deque<Individual*>& initial,std::deque<Individual*>& left,std::deque<Individual*>& right,std::deque<Individual*>& result);
-	
+
 public:
 	//
 	// "less" function for comparing Individuals based on id:
@@ -76,7 +76,7 @@ public:
 			return i1->getId().get().compare(i2->getId().get()) < 0;
 		}
 	};
-	
+
 	struct compareSpousalCount // Sort by number of spouses descending
 	{
 		bool operator()(Individual *i1,Individual *i2) const
@@ -84,18 +84,18 @@ public:
 			return i2->getSpouses()->size() < i1->getSpouses()->size();
 		}
 	};
-	
+
 private:
-	
+
 	//
 	// Inherent attributes -- These are normally derived directly from
 	// reading a database table:
-	// 
+	//
 	String   _id;         // individual's ID - never missing
 	String   _motherId;   // mother's ID - can be missing if father is also missing
 	String   _fatherId;   // father's ID - can be missing if mother is also missing
 	Gender   _gender;     // male, female, or missing
-	
+
 	// Attributes not present in FieldLabels:
 	Date*              _dob;               // date of birth
 	// <currently not used> Date*              _dod;               // date of death
@@ -113,72 +113,73 @@ private:
 	Sampled*           _sampled;           // true if individual has been sampled
 	SampleQuantity*    _sampleQuantity;    // Holds sample quantity values
 	Sterility*         _sterility;         // 2009.05.19.ET ADDENDUM
-	Twin               _twinMarker;        // stores the marker of monozygotic or dizygotic twin 
-	
+	Twin               _twinMarker;        // stores the marker of monozygotic or dizygotic twin
+
 	                                       // — 2015.08.21.ET ADDENDUM
 	Individual *_father;  // Pointer to the father -- defaults to NULL (0)
 	Individual *_mother;  // Pointer to the mother -- defaults to NULL (0)
-	
+
 	Individual *_adoptedComplement; // Pointer to adopted complement -- defaults to NULL (0);
-	
+
 	//
 	// Constructed attributes:
 	//
 	bool     _isVirtual;             // true only for "virtual" individuals created by Madeline
 	bool     _isUnconnected;         // true if the person remains unattached
 	bool     _isConsanguinous;       // true if consanguinously mated
-	bool     _hasExternalConnection; // true if the individual has a spouse from a different descent tree	
+	bool     _hasExternalConnection; // true if the individual has a spouse from a different descent tree
 	unsigned _birthOrder;            // set when dob is present
-	
+
 	// Determined attributes:
 	bool     _isOriginalFounder;
 	bool     _isOrdinaryFounder;
 	bool     _isMultipleDescentTreeJoinerSpouse;
-	
+
 	//
 	// Drawing attributes:
 	//
 	unsigned _leftWidth;
 	unsigned _rightWidth;
 	unsigned _totalWidth;
-	double   _x;              // drawing x position 
+	double   _x;              // drawing x position
 	double   _y;              // drawing y position
 	bool     _hasBeenVisited; // true if the individual has been visited
 	int      _visitCount;     // counter for times visited
 	bool     _hasBeenDrawn;   // true if the individual has been drawn
-	
+	bool     _multipleSpouseConnectorsDrawn;   // true if multiple spouse connectors have been drawn
+
 	// Loop flags:
 	unsigned _leftSideOfLoop;
 	unsigned _rightSideOfLoop;
-	
+
 	// ExternalConnection flags:
 	unsigned _leftSideOfExternalConnection;
 	unsigned _rightSideOfExternalConnection;
-	
+
 	// Spouse Connector flag:
 	bool _leftSpouseConnector;
-	
+
 	struct compareData{
 		bool operator()(Data* a, Data* b) const{
 			return *a < *b;
 		}
 	};
-	
+
 	// Containers that establish individual connections:
 	std::set<Individual *,compareIndividual> _spouses;
 	std::set<Individual *,compareIndividual> _children;
-	
+
 	std::map<std::string, std::vector<Individual*> > _childrenIdsSortedByExternalConnections;
 	std::set<unsigned> _descentTrees;
 	std::vector<NuclearFamily*> _nuclearFamilies;
-	
+
 	// Link with the DataTable
 	int _rowIndex;
 	int _tableIndex;
 	const DataTable *_pedigreeTable;
-	
+
 	static bool _sampledColumnPresent;
-	
+
 	//
 	// Flags for special types of individuals:
 	//
@@ -190,11 +191,11 @@ private:
 	bool _individualAdoptedOut;
 	bool _individualAdoptedIn;
 	bool _isSpecial;
-	
+
 	unsigned _collapsedCount;
-	
+
 public:
-	
+
 	//
 	// Constructors:
 	//
@@ -203,7 +204,7 @@ public:
 	Individual(const std::string & id, int rowIndex, int tableIndex);
 	Individual(const std::string & id, const std::string & motherId, const std::string & fatherId, const std::string &gender);
 	Individual(const std::string & id, const std::string & motherId, const std::string & fatherId, const std::string & gender,int rowIndex,int tableIndex);
-	
+
 	//
 	// Static Methods:
 	//
@@ -211,8 +212,8 @@ public:
 	static void groupIndividualsBasedOn(bool consanguinousLoop,const std::vector<Individual*>& individuals,std::deque<Individual*>& initial,std::deque<Individual*>& left,std::deque<Individual*>& right,bool unique=false);
 	static std::vector<Individual*> sortIndividualsBasedOnDataField(const std::string& name,const std::vector<Individual*>& individuals,bool dobSortOrder);
 	static void setSampledColumnPresent();
-	static bool getSampledColumnPresent(); 
-	   
+	static bool getSampledColumnPresent();
+
 	//
 	// Setters:
 	//
@@ -246,13 +247,13 @@ public:
 	void setSterilityStatus        (Sterility* sterility                ){ _sterility        =sterility;         }
 	void setCollapsedStatus        (Collapsed* collapsed                ){ _collapsed        =collapsed;         }
 	void setSampleQuantityStatus   (SampleQuantity* sampleQuantity      ){ _sampleQuantity   =sampleQuantity;    }
-	
+
 	void setBirthOrder(unsigned birthOrder){ _birthOrder = birthOrder; }
-	
+
 	// Set drawing attributes:
 	void setLeftWidth(unsigned leftWidth){ _leftWidth = leftWidth; }
 	void setRightWidth(unsigned rightWidth){ _rightWidth = rightWidth; }
-	void setTotalWidth(unsigned totalWidth) { _totalWidth = totalWidth; } 
+	void setTotalWidth(unsigned totalWidth) { _totalWidth = totalWidth; }
 	void setX(double x) { _x = x; }
 	void setY(double y) { _y = y; }
 	void setLeftSideOfLoop(unsigned loopNumber){ _leftSideOfLoop = loopNumber; }
@@ -261,13 +262,13 @@ public:
 	void setRightSideOfExternalConnection(unsigned connectionNumber) { _rightSideOfExternalConnection = connectionNumber; }
 	void setHasBeenDrawn()             { _hasBeenDrawn = true; }
 	void setVisited(bool value)        { _hasBeenVisited = value; }
-	
+
 	// By default the spouse connector is drawn on the right
 	// In exceptional cases like consanguinity if the male of the pair
 	// is on the left then the connector on the female is drawn on the left
 	void setLeftSpouseConnector(bool value){ _leftSpouseConnector = value; }
-	
-	
+
+
 	void incrementCollapsedCount(void){ _collapsedCount++; }
 	//
 	// Getters:
@@ -278,13 +279,13 @@ public:
 	String   getFatherId( void )       { return _fatherId; }
 	Gender   getGender(void)           { return _gender;   }
 	Date*    getDOB(void)              { return _dob;      }
-	
+
 	//
 	// Getters that return Boolean:
 	//
 	bool     isOrdinaryFounder(void)   { return _isOrdinaryFounder; }
-	bool     isOriginalFounder(void)   { return _isOriginalFounder; } 
-	bool     isMultipleDescentTreeJoinerSpouse(void)   { return _isMultipleDescentTreeJoinerSpouse; } 
+	bool     isOriginalFounder(void)   { return _isOriginalFounder; }
+	bool     isMultipleDescentTreeJoinerSpouse(void)   { return _isMultipleDescentTreeJoinerSpouse; }
 	bool     isVirtual(void)           { return _isVirtual; }
 	bool     hasExternalConnection(void) { return _hasExternalConnection; }
 	bool     hasBeenVisited(void)      { return _hasBeenVisited; }
@@ -315,9 +316,9 @@ public:
 	// 2009.05.19.ET Addenda:
 	bool     isInfertile(void)         { if(_infertility == 0) return false; return _infertility->getBoolean(); }
 	bool     isSterile(void)           { if(_sterility   == 0) return false; return _sterility->getBoolean(); }
-	
+
 	bool     isDeceased(void)          { if(_deceased   == 0) return false; return _deceased->getBoolean(); }
-	
+
 	// 2009.05.11.ET Addendum:
 	// get RelationshipEnded type:
 	//
@@ -327,8 +328,8 @@ public:
 	Sterility::TYPE getSterilityType(void)     const {if(_sterility   == 0) return Sterility::UNKNOWN_STERILITY_TYPE; return _sterility->getType(); }
 	std::string getInfertilityLabel(void)      const {if(_infertility == 0) return std::string("."); return _infertility->get(); }
 	std::string getSterilityLabel(void)        const {if(_sterility   == 0) return std::string("."); return _sterility->get(); }
-	
-	
+
+
 	//
 	// More getters:
 	//
@@ -345,7 +346,7 @@ public:
 	unsigned getNumberOfNuclearFamilies(void) { return _nuclearFamilies.size(); }
 	NuclearFamily* getNuclearFamily(unsigned index);
 	std::set<unsigned> getDescentTrees(void) { return _descentTrees; }
-	
+
 	// Get drawing attributes:
 	unsigned getLeftWidth(void)        { return _leftWidth; }
 	unsigned getRightWidth(void)       { return _rightWidth; }
@@ -359,32 +360,32 @@ public:
 	unsigned getLeftFlag(bool consanguinousLoop);
 	unsigned getRightFlag(bool consanguinousLoop);
 	bool getLeftSpouseConnector(void) { return _leftSpouseConnector; }
-	
+
 	// Getters of Individual connections:
 	std::vector<std::string> getChildrenIds(Individual* spouse);
-	
+
 	const std::set<Individual*,compareIndividual> *getSpouses(void) const;
 	const std::set<Individual*,compareIndividual> *getChildren(void) const;
-	
+
 	void getChildrenWithSpouse(Individual* spouse,std::vector<Individual*>& children);
 	void getChildrenSortedByExternalConnections(Individual* spouse,std::vector<Individual*>& children);
-	
+
 	// Methods that access the underlying pedigree Data Table:
 	void setPedigreeDataTable(const DataTable *pedigreeTable){
 		_pedigreeTable = pedigreeTable;
 	}
-	
+
 	Data* getData(const std::string label){
 		if(_tableIndex != -1 && _rowIndex != -1){
 			if(_pedigreeTable->columnExists(label.c_str())){
 				return _pedigreeTable->getDataAtIndex(label,_rowIndex);
 			}
 		}
-		
+
 		Data* temp = new String(".");
 		return temp;
 	}
-	
+
 	// Other Methods:
 	void sortSpouses(bool externalFlag=false);
 	void addSpouse(Individual* spouse);
@@ -392,13 +393,13 @@ public:
 	void addDescentTree(unsigned descentTreeId) { _descentTrees.insert(descentTreeId); }
 	void addNuclearFamily(NuclearFamily* nuclearFamily){ _nuclearFamilies.push_back(nuclearFamily); }
 	void setChildrenIdsSortedByExternalConnections(std::string parentPair,std::vector<Individual*>  children);
-	
+
 	// Debug:
 	void displayChildren();
 	void displaySpouses();
 	void displayNuclearFamilies();
 	void display();
-	
+
 	//
 	// "get" functions for determining special categories of individuals:
 	//
@@ -410,19 +411,22 @@ public:
 	inline bool isIndividualAdoptedIn(void){                     return _individualAdoptedIn;                     }
 	inline bool isIndividualAdoptedOut(void){                    return _individualAdoptedOut;                    }
 	inline bool isSpecial(void){                                 return _isSpecial;                               }
-	
+
 	//
 	// getDataTable:
 	//
 	const DataTable * getDataTable(void) const { return _pedigreeTable; }
-	
+
 	//
 	// 2011.03.17.ET Addendum:
 	//
 	int getVisitCount()          { return _visitCount; }
 	void resetVisitCount()       { _visitCount = 0;    }
 	void incrementVisitCount()   { _visitCount++;      }
-	
+
+	void setMultipleSpouseConnectorsDrawn(void){ _multipleSpouseConnectorsDrawn=true; }
+	bool getMultipleSpouseConnectorsDrawn(void){ return _multipleSpouseConnectorsDrawn; }
+
 };
 
 #endif
