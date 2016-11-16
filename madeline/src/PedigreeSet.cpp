@@ -1,23 +1,23 @@
 /////////////////////////////////////////////////////////
 //
-// This file is part of the MADELINE 2 program 
+// This file is part of the MADELINE 2 program
 // written by Edward H. Trager and Ritu Khanna
 // Copyright (c) 2005 by the
 // Regents of the University of Michigan.
 // All Rights Reserved.
-// 
+//
 // The latest version of this program is available from:
-// 
+//
 //   http://eyegene.ophthy.med.umich.edu/madeline/
-//   
+//
 // Released under the GNU General Public License.
 // A copy of the GPL is included in the distribution
 // package of this software, or see:
-// 
+//
 //   http://www.gnu.org/copyleft/
-//   
+//
 // ... for licensing details.
-// 
+//
 /////////////////////////////////////////////////////////
 
 //
@@ -41,16 +41,16 @@
 
 PedigreeSet::~PedigreeSet()
 {
-	
-	
+
+
 	std::set<Pedigree*,comparePedigrees>::iterator pit = _pedigrees.begin();
 	while(pit != _pedigrees.end()){
 		delete *pit;
 		++pit;
 	}
 	_pedigrees.clear();
-	
-	
+
+
 }
 
 //////////////////////////////////////
@@ -63,81 +63,82 @@ PedigreeSet::~PedigreeSet()
 // _checkParentChildDOB():
 //
 void PedigreeSet::_checkParentChildDOB(){
-	
+
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
 		(*it)->checkParentChildDOB();
 		++it;
 	}
-	
+
 }
 
 //
 // _checkPregnancyStateValidity()
 //
 void PedigreeSet::_checkPregnancyStateValidity(){
-	
+
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
 		(*it)->checkPregnancyStateValidity();
 		++it;
 	}
-	
+
 }
 
 //
 // _computeWidths():
 //
 void PedigreeSet::_computeWidths(const std::string& sortField,bool dobSortOrder ){
-	
+
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
 		(*it)->computePedigreeWidth(sortField,dobSortOrder);
-		
+
 		++it;
 	}
-	
-	
+
+
 }
 
 //
 // _determineFoundingGroups():
 //
 void PedigreeSet::_determineFoundingGroups(){
-	
+
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
 		(*it)->determineFoundingGroups();
 		++it;
 	}
-	
+
 }
 
 //
 // _establishConnections():
 //
 void PedigreeSet::_establishConnections(){
-	
+
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
 		(*it)->addIdentifiedMissingParents();
 		(*it)->establishIndividualConnections();
+		(*it)->reportUnconnectedIndividuals();
 		++it;
 	}
-	
+
 }
 
 //
 // _setCoreOptionalFields():
 //
 void PedigreeSet::_setCoreOptionalFields(const DataTable* pedigreeTable){
-	
+
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
 		(*it)->setCoreOptionalFields(pedigreeTable);
 		++it;
 	}
-	
+
 }
 
 
@@ -151,7 +152,7 @@ void PedigreeSet::_setCoreOptionalFields(const DataTable* pedigreeTable){
 // addPedigreesFromDataTable():
 //
 void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, unsigned tableIndex,const std::string& sortField){
-	
+
 	//
 	// Use const reference for convenience:
 	// (so I don't have to change the code
@@ -159,9 +160,9 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	//  const DataTable & to a const DataTable * )
 	//
 	const DataTable & pedigreeTable = (*p_pedigreeTable);
-	
+
 	//std::cout << vt100::startBlue << "┏ Start of    addPedigreesFromDataTable ┓" << vt100::stopColor << std::endl;
-	
+
 	//
 	// Get all the core columns from the datatable:
 	//
@@ -172,7 +173,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	DataColumn *motherIdColumn = pedigreeTable.getColumn( pedigreeTable.labels.MotherIdField );
 	DataColumn *fatherIdColumn = pedigreeTable.getColumn( pedigreeTable.labels.FatherIdField );
 	DataColumn *genderColumn   = pedigreeTable.getColumn( pedigreeTable.labels.GenderField );
-	
+
 	DataColumn *collapsedColumn= 0;
 	if(pedigreeTable.columnExists(pedigreeTable.labels.CollapsedField)){
 		// 2015.11.30.ET ADDENDA:
@@ -184,12 +185,12 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	std::string currentFamily;
 	int numberOfRows = familyIdColumn->getNumberOfRows();
 	int index=0;
-	
+
 	std::map<std::string,Individual *> collapsedIndicatorSet;
 	Individual * collapsedIndividual=0;
-	
+
 	while(index < numberOfRows){
-		
+
 		currentFamily = familyIdColumn->get(index);
 		if(currentFamily == "."){
 			Warning("PedigreeSet::addPedigreesFromDataTable()",
@@ -202,7 +203,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 		std::pair<std::set<Pedigree*,comparePedigrees>::iterator,bool> pp;
 		pp = _pedigrees.insert(new Pedigree(currentFamily,tableIndex));
 		if(pp.second){
-			for(int i=0;i<familyIdColumn->getNumberOfRows();i++) { 
+			for(int i=0;i<familyIdColumn->getNumberOfRows();i++) {
 				if(currentFamily.compare(familyIdColumn->get(i)) == 0){
 					///////////////////////////////////
 					//
@@ -233,10 +234,10 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 								//////////////////////////////////////////////////
 								//
 								// Is gender of new person consistent?
-								// 
-								// Note: using Gender.getEnum() guarantees 
+								//
+								// Note: using Gender.getEnum() guarantees
 								// symbolic equivalency across different
-								// string representations, e.g. "M"=="male", 
+								// string representations, e.g. "M"=="male",
 								// "♀"=="female", etc.
 								//
 								//////////////////////////////////////////////////
@@ -249,7 +250,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 								// Is affection status of new person consistent?
 								//
 								//////////////////////////////////////////////////
-								
+
 								//////////////////////////////////////////////////
 								//
 								// increment collapsed count:
@@ -269,24 +270,24 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 		}
 		index++;
 	}
-	
+
 	// Set the core optional fields on the individuals
 	_setCoreOptionalFields(p_pedigreeTable);
-	
+
 	_establishConnections();
-	
+
 	bool dobPresent = false;
 	if(pedigreeTable.getDOBColumnIndex() != DataTable::COLUMN_IS_MISSING){
 		_checkParentChildDOB();
 		dobPresent = true;
 	}
-	
+
 	if(pedigreeTable.getPregnancyColumnIndex() != DataTable::COLUMN_IS_MISSING){
 		_checkPregnancyStateValidity();
 	}
-	
+
 	_determineFoundingGroups();
-	
+
 	bool sortFieldPresent = false;
 	if(sortField != std::string("") && sortField != pedigreeTable.labels.DOBField){
 		// Check to see if the field actually exists in the data table
@@ -305,33 +306,33 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 			//std::cout << "Siblings are ordered by DOB." << std::endl;
 			_computeWidths(pedigreeTable.labels.DOBField,true);
 			DrawingMetrics::setDisplayBirthOrder(true);
-		}else{    
+		}else{
 			//std::cout << "Default ordering of siblings." << std::endl;
 			_computeWidths(std::string(""));
-			
+
 		}
 	}
 	//std::cout << vt100::startBlue << "┗ End of      addPedigreesFromDataTable ┛" << vt100::stopColor << std::endl;
-	
+
 }
 
 //
 // draw():
 //
 std::string PedigreeSet::draw(const DataTable *const pedigreeTable){
-	
+
 	//std::cout << vt100::startBlue << "┏ Start of    draw                      ┓" << vt100::stopColor << std::endl;
 	//
-	// Make a note if there is only one pedigree to be drawn: 
+	// Make a note if there is only one pedigree to be drawn:
 	//
 	if( _pedigrees.size()==1 ) DrawingMetrics::setHasOnlyOnePedigreeState(true);
-	
+
 	//
 	// Instantiate a LabelSet object for a pedigree set:
 	//
 	LabelSet labelSet(pedigreeTable);
 	// DEBUG: std::cout << "No of labels: " << labelSet.getNumberOfLabels() << std::endl;
-	
+
 	//
 	// Iterate over the pedigrees and draw them:
 	//
@@ -352,20 +353,20 @@ std::string PedigreeSet::draw(const DataTable *const pedigreeTable){
 	}
 	*/
 	//std::cout << vt100::startBlue << "┗ End of      draw                      ┛" << vt100::stopColor << std::endl;
-	
+
 }
 
 //
 // display():
 //
 void PedigreeSet::display(){
-	
+
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
-		std::cout << "Pedigree Id " << (*it)->getId() << " Table Id" << (*it)->getTableId() << std::endl; 
+		std::cout << "Pedigree Id " << (*it)->getId() << " Table Id" << (*it)->getTableId() << std::endl;
 		// Display Individuals in Pedigree Id
 		(*it)->display();
 		it++;
 	}
-	
+
 }
