@@ -178,6 +178,7 @@ public:
 
 	// 2015.09.18.ET ADDENDUM: custom color series:
 	static std::vector<ColorSeries> customColorSeries;
+
 	// 2015.10.12.ET ADDENDUM: Adding a map for more flexibility;
 	static std::vector< std::map<std::string,DrawingColor> > customColorMap;
 
@@ -299,12 +300,12 @@ public:
 		DrawingMetrics::_horizontalInterval = 8;
 		// DrawingMetrics::_horizontalInterval = 12;
 		DrawingMetrics::_iconInterval = 2*DrawingMetrics::_horizontalInterval;
-		DrawingMetrics::_iconDiameter = 6;
+		DrawingMetrics::_iconDiameter = 8;
 		DrawingMetrics::_verticalDrop1=30;
 		DrawingMetrics::_verticalDrop2 = 7.5;
 		DrawingMetrics::_cellSpacing = 1; // Hmm ... Not used? FIX ME: NOT USED? ONLY _labelMargin USED INSTEAD ?
 		DrawingMetrics::_lineHeight = 3; // in mm
-		DrawingMetrics::_labelMargin = 1; // one mm margination is good
+		DrawingMetrics::_labelMargin = .75; // one mm margination is good
 		DrawingMetrics::_verticalTick=1; // one mm vertical tick drop (used for drawing twins) is good
 
 		//
@@ -320,7 +321,7 @@ public:
 		// 2009.09.01.ET: Changed default font to DejaVu Sans
 		//
 		DrawingMetrics::_fontFamily = "DejaVu Sans";
-		DrawingMetrics::_fontSize        = 12;
+		DrawingMetrics::_fontSize        = 13;
 		DrawingMetrics::_headerFontSize  = 18;
 		DrawingMetrics::_counterFontSize = 14;
 		DrawingMetrics::_fontSizeUnit = "px";
